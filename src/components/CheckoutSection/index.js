@@ -63,7 +63,7 @@ const DemoAddress = {
 
 const CheckoutSection = ({ cartList, addToOrderHistory }) => {
   // states
-  const [tabs, setExpanded] = useState({
+  const [tabs, setExpanded] = React.useState({
     cupon: false,
     billing_adress: false,
     payment: true,
@@ -80,7 +80,7 @@ const CheckoutSection = ({ cartList, addToOrderHistory }) => {
     state: "Haryana",
   });
   const [userAddressArr, setUserAddressArr] = useState([]);
-  const [forms, setForms] = useState({
+  const [forms, setForms] = React.useState({
     cupon_key: "",
     fname: "",
     lname: "",
@@ -113,7 +113,7 @@ const CheckoutSection = ({ cartList, addToOrderHistory }) => {
   useEffect(() => {
     let cc = localStorage.getItem("Contact");
     setForms({ ...forms, ...DemoAddress, phone: cc });
-  }, []);
+  }, [forms]);
   useEffect(() => {
     (async () => {
       const res = localStorage.getItem("loggedUserId");
