@@ -1,0 +1,218 @@
+.stepLabel {
+  width: inherit;
+  justify-content: center;
+  display: inline-flex;
+}
+.productList {
+  display: flex;
+  flex-direction: row;
+  padding-inline: 30px;
+  font-size: 15px;
+  max-width: 1041px;
+  margin: auto;
+  /* background-color: #f3cbb38a;
+  border: 2px solid #e5c4944a; */
+  background-image: linear-gradient(#9cc794, #449737);
+  border-radius: 28px;
+  box-shadow: -14px 0px 14px #7b746b;
+  margin-bottom: 2%;
+  font-weight: 900;
+}
+.productImage {
+  padding: 3px;
+  flex: 50%;
+  max-width: 95px;
+  border-radius: 2px;
+}
+
+.productName {
+  display: flex;
+  flex-direction: column;
+  flex: 50%;
+  padding: 10px;
+  margin-left: 1%;
+}
+.rateQuantity {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productquantity {
+  position: relative;
+  display: inline-block;
+}
+.productquantity input {
+  width: 40px;
+  background: transparent;
+  text-align: center;
+  border: none;
+}
+.qtybutton {
+  position: absolute;
+  height: 30px;
+  /* width: 20px; */
+  text-align: center;
+  /* line-height: 38px; */
+  font-size: 28px;
+  cursor: pointer;
+  font-size: 25px;
+  background-color: #baa68e;
+}
+.separator {
+  height: 1.5px;
+  background: #bfcbcb;
+  margin-top: 4%;
+  margin-bottom: 2%;
+}
+.cart-plus-minus {
+  display: flex;
+  flex-direction: row;
+  font-size: large;
+}
+.datePicker {
+  min-width: 100%;
+}
+
+.iconDatePicker {
+  position: absolute;
+  margin-left: -23px;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.Sample__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.Sample__container__content {
+  display: flex;
+  max-width: 100%;
+  flex-basis: 420px;
+  flex-direction: column;
+  flex-grow: 100;
+  align-items: stretch;
+  padding-top: 1em;
+}
+
+.react-calendar {
+  background-color: #4397358a;
+  border-radius: 10px;
+  width: auto;
+  height: auto;
+  font-family: inherit;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+}
+
+.react-calendar__month-view__days
+  .react-calendar__month-view__days__day--neighboringMonth {
+  cursor: context-menu;
+}
+.schButton {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 0.875rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 35px;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  padding: 5px 15px;
+  background-color: #78a252;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.schButton:hover {
+  font-size: 0.95rem;
+  transition: font-size cubic-bezier(0.72, 0.19, 0.95, 0.59) 250ms;
+}
+
+.schButton-active {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 0.9rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  transition: background-color 250ms cubic-bezier(0.72, 0.19, 0.95, 0.59) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 35px;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  padding: 5px 15px;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  background-color: #449737;
+  outline: 0;
+}
+.schButton-active:active {
+  background-color: #449737;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -ms-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-size: 100% 100%;
+}
+
+.highlight {
+  color: #000000;
+  border-radius: 22px;
+  background-color: #5e871d94;
+  transition: background-color 350ms linear;
+}
+.react-calendar__tile:disabled {
+  color: #1010104d;
+  background-color: #44973508;
+  transition: background-color 350ms linear;
+  border-radius: 22px;
+}
+.react-calendar__tile--now {
+  transition: background-color 350ms linear;
+  background: #4497352f;
+  border-radius: 22px;
+}
+.react-calendar__tile--active {
+  background-color: #449735;
+  transition: background-color 350ms linear;
+  color: white;
+}
+.react-calendar__tile--now:hover {
+  transition: background-color 350ms linear;
+  background: #226615;
+  color: white;
+}
+.bill {
+  background-color: #9cc796;
+  border-radius: 4px;
+  font-weight: 600;
+  box-shadow: 0px -2px 0px -4px rgb(0 0 0 / 20%),
+    0px -1px 1px 0px rgb(0 0 0 / 14%), 0px 15px 11px 0px rgb(0 0 0 / 12%);
+}
+.billItems {
+  margin: 10px;
+}
+.itemqtyprice {
+  display: flex;
+}
+.itemprice {
+  margin-inline: 2px;
+}
