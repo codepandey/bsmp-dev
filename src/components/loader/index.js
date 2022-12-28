@@ -6,7 +6,7 @@ const Loader = ({ isLoading, setIsLoading }) => {
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
-  }, [isLoading]);
+  }, []);
   return (
     <>
       <Backdrop
