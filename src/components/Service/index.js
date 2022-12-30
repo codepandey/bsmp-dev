@@ -42,7 +42,7 @@ const Service = (props) => {
                 </span>
               </div>
               <div className="service-icon-text">
-                <h2>20/07 Support</h2>
+                <h2>24/07 Support</h2>
                 <span>Any time Support </span>
               </div>
             </div>
