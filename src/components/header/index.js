@@ -126,7 +126,7 @@ class Header extends Component {
                           style={{ overflow: "hidden", whiteSpace: "nowrap" }}
                         >
                           {" "}
-                          Welcomeee, User
+                          Welcome, User!!!
                         </span>
                       </div>
                     </div>
