@@ -16,12 +16,12 @@ const Category = (props) => {
           <div className="col-lg-6">
             <div className="category-wrap">
               <div className="category-title">
-                <h2>Our Products Category</h2>
-                <p>
+                <h2>Our Products Categories</h2>
+                {/* <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Nemo, eos fugit officiis error ipsum, dolor ducimus nam
                   ratione nulla deleniti inventore blanditiis.
-                </p>
+                </p> */}
               </div>
               <div className="category-item">
                 <div className="category-icon">
