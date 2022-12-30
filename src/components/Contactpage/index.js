@@ -9,10 +9,10 @@ const Contactpage = () => {
                 <div className="row">
                     <div className="col col-lg-6 col-12">
                         <div className="section-title-s3 section-title-s5">
-                            <h2>Our Contacts</h2>
+                            <h2>Contacts Us</h2>
                         </div>
                         <div className="contact-details">
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classNameical Latin literature from 45 BC, making it over 2000 years old. </p>
+                            <p> &nbsp; &nbsp;&nbsp; At Brahmshakti, We do our best to ensure the highest quality customer care to match our top quality product offerings. Please send us all your questions and feedback and we will answer in a timley fashion. Thank you for being a valued customer.</p>
                             <ul>
                                 <li>
                                     <div className="icon">
