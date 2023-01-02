@@ -1,7 +1,7 @@
 {
-  "name": "annahl",
+  "name": "bsmp",
   "version": "0.1.0",
-  "homepage": "http://annahl-react.thmepresss.com",
+  "homepage": "http://bsmp-react.thmepresss.com",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.0",
