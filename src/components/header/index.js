@@ -126,7 +126,7 @@ class Header extends Component {
                           style={{ overflow: "hidden", whiteSpace: "nowrap" }}
                         >
                           {" "}
-                          Welcome, User!!!
+                          Welcome, User
                         </span>
                       </div>
                     </div>
@@ -581,80 +581,82 @@ class Header extends Component {
                       </div>
                     </div>
                   </div>
-                  <div className="header-wishlist-form-wrapper">
-                    <button
-                      onClick={this.wishlistHandler}
-                      className="wishlist-toggle-btn"
-                    >
-                      <i className="fi flaticon-heart"></i>{" "}
-                      <span className="cart-count">{wishs.length}</span>{" "}
-                    </button>
-                    <div
-                      className={`mini-wislist-content ${
-                        isWishlistShow ? "mini-cart-content-toggle" : ""
-                      }`}
-                    >
+                  {this.props.isLoggedIn !== null && (
+                    <div className="header-wishlist-form-wrapper">
                       <button
                         onClick={this.wishlistHandler}
-                        className="mini-cart-close"
+                        className="wishlist-toggle-btn"
                       >
-                        <i className="ti-close"></i>
+                        <i className="fi flaticon-heart"></i>{" "}
+                        <span className="cart-count">{wishs.length}</span>{" "}
                       </button>
-                      <div className="mini-cart-items">
-                        {wishs &&
-                          wishs.length > 0 &&
-                          wishs.map((wish, i) => (
-                            <div className="mini-cart-item clearfix" key={i}>
-                              <div className="mini-cart-item-image">
-                                <span>
-                                  <img src={wish.proImg} alt="icon" />
-                                </span>
+                      <div
+                        className={`mini-wislist-content ${
+                          isWishlistShow ? "mini-cart-content-toggle" : ""
+                        }`}
+                      >
+                        <button
+                          onClick={this.wishlistHandler}
+                          className="mini-cart-close"
+                        >
+                          <i className="ti-close"></i>
+                        </button>
+                        <div className="mini-cart-items">
+                          {wishs &&
+                            wishs.length > 0 &&
+                            wishs.map((wish, i) => (
+                              <div className="mini-cart-item clearfix" key={i}>
+                                <div className="mini-cart-item-image">
+                                  <span>
+                                    <img src={wish.proImg} alt="icon" />
+                                  </span>
+                                </div>
+                                <div className="mini-cart-item-des">
+                                  <p>{wish.title} </p>
+                                  <span className="mini-cart-item-price">
+                                    ₹{wish.price}
+                                  </span>
+                                  <span className="mini-cart-item-quantity">
+                                    <button
+                                      onClick={() =>
+                                        this.props.removeFromWishList(wish.id)
+                                      }
+                                      className="btn btn-sm btn-danger"
+                                    >
+                                      <i className="ti-close"></i>
+                                    </button>{" "}
+                                  </span>
+                                </div>
                               </div>
-                              <div className="mini-cart-item-des">
-                                <p>{wish.title} </p>
-                                <span className="mini-cart-item-price">
-                                  ₹{wish.price}
-                                </span>
-                                <span className="mini-cart-item-quantity">
-                                  <button
-                                    onClick={() =>
-                                      this.props.removeFromWishList(wish.id)
-                                    }
-                                    className="btn btn-sm btn-danger"
-                                  >
-                                    <i className="ti-close"></i>
-                                  </button>{" "}
-                                </span>
-                              </div>
-                            </div>
-                          ))}
-                      </div>
-                      <div className="mini-cart-action clearfix">
-                        <span className="mini-checkout-price">
-                          Total: ₹{totalwishlistprice}
-                        </span>
-                        <div className="mini-btn">
-                          <Link
-                            onClick={ClickHandler}
-                            to="/checkout"
-                            className="view-cart-btn s1"
-                          >
-                            Checkout
-                          </Link>
-                          <Link
-                            onClick={ClickHandler}
-                            to="/wishlist"
-                            className="view-cart-btn"
-                          >
-                            View Wishlist
-                          </Link>
+                            ))}
+                        </div>
+                        <div className="mini-cart-action clearfix">
+                          <span className="mini-checkout-price">
+                            Total: ₹{totalwishlistprice}
+                          </span>
+                          <div className="mini-btn">
+                            <Link
+                              onClick={ClickHandler}
+                              to="/checkout"
+                              className="view-cart-btn s1"
+                            >
+                              Checkout
+                            </Link>
+                            <Link
+                              onClick={ClickHandler}
+                              to="/wishlist"
+                              className="view-cart-btn"
+                            >
+                              View Wishlist
+                            </Link>
+                          </div>
+                        </div>
+                        <div className="visible-icon">
+                          <img src={min3} alt="icon" />
                         </div>
                       </div>
-                      <div className="visible-icon">
-                        <img src={min3} alt="icon" />
-                      </div>
                     </div>
-                  </div>
+                  )}
                   <MobileMenu />
                 </div>
               </div>

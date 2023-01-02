@@ -12,6 +12,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import "./style.scss";
 import api from "../../api";
+import { getLocalUserDetail } from "../../apiService/localStorageItem";
 
 const styles = (theme) => ({
   root: {
@@ -52,6 +53,7 @@ export function HorizontalNonLinearStepper(props) {
     noOfDays: "",
     frequency: "",
   });
+  const [isLoggedIn, setLoggedIn] = React.useState(false);
 
   React.useEffect(() => {
     if (props.cartEditItem) {
@@ -60,6 +62,18 @@ export function HorizontalNonLinearStepper(props) {
     }
     fetchData();
   }, []);
+  React.useEffect(() => {
+    window.addEventListener("storage", logFunc);
+    logFunc();
+  }, []);
+  const logFunc = () => {
+    let res = getLocalUserDetail();
+    if (res) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  };
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -180,6 +194,7 @@ export function HorizontalNonLinearStepper(props) {
                   {/*  Step 1 */}
                   {activeStep === 0 && (
                     <Card
+                      isLoggedIn={isLoggedIn}
                       handleNext={handleNext}
                       setSubProduct={setSubProduct}
                       addToWishListProduct={addToWishListProduct}
