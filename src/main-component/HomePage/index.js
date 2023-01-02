@@ -57,14 +57,14 @@ const HomePage = ({ addToCart, addToWishList }) => {
         <Hero2 />
         <Category />
         <Product
-          isLoggedIn
+          isLoggedIn={isLoggedIn}
           addToCartProduct={addToCartProduct}
           addToWishListProduct={addToWishListProduct}
           products={pData}
         />
         <OfferSection />
         <FlashSale
-          isLoggedIn
+          isLoggedIn={isLoggedIn}
           addToCartProduct={addToCartProduct}
           addToWishListProduct={addToWishListProduct}
           products={pData}
