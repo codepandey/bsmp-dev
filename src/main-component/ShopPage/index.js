@@ -11,7 +11,7 @@ import { addToCart, addToWishList } from "../../store/actions/action";
 import Transitions from "../router/transition";
 const ShopPage = ({ addToCart, addToWishList, ...props }) => {
   const [productsArray, setProductsArray] = useState([]);
-  useEffect(() => {});
+  const cat = window.location.href.split("=")[1];
   useEffect(() => {
     const category = window.location.href.split("=")[1];
     console.log(category);
@@ -71,7 +71,7 @@ const ShopPage = ({ addToCart, addToWishList, ...props }) => {
     <Transitions>
       <Fragment>
         {/* <Navbar hClass={"header-style-2"} /> */}
-        <PageTitle pageTitle={"Shop"} pagesub={"Shop"} />
+        <PageTitle pageTitle={"Shop"} pagesub={"Shop"} cat={cat} />
         <div className="shop-section">
           <div className="container">
             <div className="row">
