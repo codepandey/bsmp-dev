@@ -6,7 +6,13 @@ import DefaultModal from "../../../src/components/Modal";
 
 const Card = (props) => {
   // products, addToCartProduct,addToWishListProduct
-  const { handleNext, products, addToWishListProduct, setSubProduct } = props;
+  const {
+    handleNext,
+    products,
+    addToWishListProduct,
+    setSubProduct,
+    isLoggedIn,
+  } = props;
 
   // console.log(products)
   const ClickHandler = () => {
@@ -30,7 +36,7 @@ const Card = (props) => {
     // addSubProduct(product);
     ClickHandler();
   };
-  // console.log(subProduct);
+  console.log(isLoggedIn, "isLoggedIn");
   return (
     <div className="p-4">
       <div className="section-title mb-0">
@@ -73,16 +79,18 @@ const Card = (props) => {
                           <i className="fi ti-eye"></i>
                         </button>
                       </li>
-                      <li>
-                        <button
-                          data-bs-toggle="tooltip"
-                          data-bs-html="true"
-                          title="Add to Cart"
-                          onClick={() => addToWishListProduct(product)}
-                        >
-                          <i className="fi flaticon-like"></i>
-                        </button>
-                      </li>
+                      {isLoggedIn && (
+                        <li>
+                          <button
+                            data-bs-toggle="tooltip"
+                            data-bs-html="true"
+                            title="Add to Cart"
+                            onClick={() => addToWishListProduct(product)}
+                          >
+                            <i className="fi flaticon-like"></i>
+                          </button>
+                        </li>
+                      )}
                     </ul>
                     <div className="offer-thumb">
                       <span>{`${product.discount} %`}</span>

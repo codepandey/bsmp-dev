@@ -18,6 +18,7 @@ import axios from "axios";
 import api from "../../api";
 import Transitions from "../router/transition";
 import Hero2 from "../../components/hero2";
+import { getLocalUserDetail } from "../../apiService/localStorageItem";
 
 const HomePage = ({ addToCart, addToWishList }) => {
   const [pData, setPData] = useState([]);
@@ -27,6 +28,19 @@ const HomePage = ({ addToCart, addToWishList }) => {
   };
   const addToWishListProduct = (product, qty = 1) => {
     addToWishList(product, qty);
+  };
+  const [isLoggedIn, setLoggedIn] = React.useState(false);
+  React.useEffect(() => {
+    window.addEventListener("storage", logFunc);
+    logFunc();
+  }, []);
+  const logFunc = () => {
+    let res = getLocalUserDetail();
+    if (res) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
   };
   useEffect(() => {
     const fetchProducts = async () => {
@@ -43,12 +57,14 @@ const HomePage = ({ addToCart, addToWishList }) => {
         <Hero2 />
         <Category />
         <Product
+          isLoggedIn
           addToCartProduct={addToCartProduct}
           addToWishListProduct={addToWishListProduct}
           products={pData}
         />
         <OfferSection />
         <FlashSale
+          isLoggedIn
           addToCartProduct={addToCartProduct}
           addToWishListProduct={addToWishListProduct}
           products={pData}

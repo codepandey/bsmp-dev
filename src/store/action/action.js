@@ -243,11 +243,16 @@ export const decrementSubQuantity = (product) => async (dispatch) => {
   });
 };
 
-export const addToWishList = (product) => (dispatch) => {
-  dispatch({
-    type: ADD_TO_WISHLIST,
-    product,
-  });
+export const addToWishList = (product) => async (dispatch) => {
+  const apiRes = await addToFav(product.id);
+  console.log(apiRes.product.id, "apiRes");
+  if (apiRes?.product?.id) {
+    // toast.success("Item added to WishList");
+    dispatch({
+      type: ADD_TO_WISHLIST,
+      product,
+    });
+  }
 };
 
 export const removeFromWishList = (id) => (dispatch) => {

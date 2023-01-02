@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from 'react-bootstrap-v5';
+import { Button } from "react-bootstrap-v5";
 import DefaultModal from "../Modal";
 
-const Product = ({ products, addToCartProduct, addToWishListProduct }) => {
+const Product = ({
+  products,
+  addToCartProduct,
+  addToWishListProduct,
+  isLoggedIn,
+}) => {
   const ClickHandler = () => {
     window.scrollTo(10, 0);
   };
@@ -28,9 +33,7 @@ const Product = ({ products, addToCartProduct, addToWishListProduct }) => {
               <h2>
                 Our Top <span>Picks</span>
               </h2>
-              <p>
-                Our Top Choices From Our Farms to Your Table.
-              </p>
+              <p>Our Top Choices From Our Farms to Your Table.</p>
             </div>
           </div>
         </div>
@@ -64,19 +67,25 @@ const Product = ({ products, addToCartProduct, addToWishListProduct }) => {
                             <i className="fi ti-eye"></i>
                           </button>
                         </li>
-                        <li>
-                          <button
-                            data-bs-toggle="tooltip"
-                            data-bs-html="true"
-                            title="Add to Wishlist"
-                            onClick={() => addToWishListProduct(product)}
-                          >
-                            <i className="fi flaticon-like"></i>
-                          </button>
-                        </li>
+                        {isLoggedIn && (
+                          <li>
+                            <button
+                              data-bs-toggle="tooltip"
+                              data-bs-html="true"
+                              title="Add to Wishlist"
+                              onClick={() => addToWishListProduct(product)}
+                            >
+                              <i className="fi flaticon-like"></i>
+                            </button>
+                          </li>
+                        )}
                       </ul>
                       <div className="offer-thumb">
-                        <span>{product.discount===0?"-15 %":`-${product.discount} %`}</span>
+                        <span>
+                          {product.discount === 0
+                            ? "-15 %"
+                            : `-${product.discount} %`}
+                        </span>
                       </div>
                     </div>
                     <div className="product-content">
@@ -92,7 +101,7 @@ const Product = ({ products, addToCartProduct, addToWishListProduct }) => {
                         <div className="product-price">
                           <ul>
                             <li>₹{product.price}</li>
-                            <li>₹{parseInt(product.price*1.15)}</li>
+                            <li>₹{parseInt(product.price * 1.15)}</li>
                           </ul>
                         </div>
                         <div className="product-ratting">
@@ -113,7 +122,13 @@ const Product = ({ products, addToCartProduct, addToWishListProduct }) => {
                               <i className="fa fa-star" aria-hidden="true"></i>
                             </li>
                           </ul> */}
-                                                  <Button className="cBtnTheme" onClick={()=>addToCartProduct(product)} style={{border: 'none'}}>Add to Cart</Button>
+                          <Button
+                            className="cBtnTheme"
+                            onClick={() => addToCartProduct(product)}
+                            style={{ border: "none" }}
+                          >
+                            Add to Cart
+                          </Button>
                         </div>
                         {/* <Button className="cBtnTheme" onClick={()=>addToCartProduct(product)} style={{border: 'none'}}>Add to Cart</Button> */}
                       </div>

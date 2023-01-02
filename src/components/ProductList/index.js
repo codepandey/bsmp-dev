@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from 'react-bootstrap-v5';
+import { Button } from "react-bootstrap-v5";
 import DefaultModal from "../Modal";
 import addToCartService from "../../apiService/addToCart";
 
-const ProductList = ({ products, addToCartProduct, addToWishListProduct }) => {
+const ProductList = ({
+  products,
+  addToCartProduct,
+  addToWishListProduct,
+  isLoggedIn,
+}) => {
   const ClickHandler = () => {
     window.scrollTo(10, 0);
   };
@@ -20,9 +25,9 @@ const ProductList = ({ products, addToCartProduct, addToWishListProduct }) => {
     setOpen(true);
     setState(item);
   };
-  const handleAddToCart =(data)=>{
+  const handleAddToCart = (data) => {
     addToCartProduct(data);
-  }
+  };
 
   return (
     <div className="product-list">
@@ -55,16 +60,18 @@ const ProductList = ({ products, addToCartProduct, addToWishListProduct }) => {
                           <i className="fi ti-eye"></i>
                         </button>
                       </li>
-                      <li>
-                        <button
-                          data-bs-toggle="tooltip"
-                          data-bs-html="true"
-                          title="Add to Cart"
-                          onClick={() => addToWishListProduct(product)}
-                        >
-                          <i className="fi flaticon-like"></i>
-                        </button>
-                      </li>
+                      {isLoggedIn && (
+                        <li>
+                          <button
+                            data-bs-toggle="tooltip"
+                            data-bs-html="true"
+                            title="Add to Cart"
+                            onClick={() => addToWishListProduct(product)}
+                          >
+                            <i className="fi flaticon-like"></i>
+                          </button>
+                        </li>
+                      )}
                     </ul>
                     <div className="offer-thumb">
                       <span>-{product.discount}%</span>
@@ -83,7 +90,11 @@ const ProductList = ({ products, addToCartProduct, addToWishListProduct }) => {
                       <div className="product-price">
                         <ul>
                           <li>₹{product.price}</li>
-                          <li>₹{product.price+product.price*product.discount/100}</li>
+                          <li>
+                            ₹
+                            {product.price +
+                              (product.price * product.discount) / 100}
+                          </li>
                         </ul>
                       </div>
                       <div className="product-ratting">
@@ -99,17 +110,21 @@ const ProductList = ({ products, addToCartProduct, addToWishListProduct }) => {
                           </li>
                           <li>
                             <i className="fa fa-star" aria-hidden="true"></i>
-                          </li> 
+                          </li>
                           <li>
                             <i className="fa fa-star" aria-hidden="true"></i>
                           </li>
                         </ul>
                       </div>
-                      <Button className="cBtnTheme" onClick={()=>addToCartProduct(product)} style={{border: 'none'}}>Add to Cart</Button>
+                      <Button
+                        className="cBtnTheme"
+                        onClick={() => addToCartProduct(product)}
+                        style={{ border: "none" }}
+                      >
+                        Add to Cart
+                      </Button>
                     </div>
-                    <p>
-                      {product.description}
-                    </p>
+                    <p>{product.description}</p>
                   </div>
                 </div>
               </div>

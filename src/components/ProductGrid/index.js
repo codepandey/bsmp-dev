@@ -1,11 +1,15 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from 'react-bootstrap-v5';
+import { Button } from "react-bootstrap-v5";
 import DefaultModal from "../Modal";
 import addToCartService from "../../apiService/addToCart";
 
-const ProductGrid = ({ products, addToCartProduct,addToWishListProduct }) => {
+const ProductGrid = ({
+  products,
+  addToCartProduct,
+  addToWishListProduct,
+  isLoggedIn,
+}) => {
   const ClickHandler = () => {
     window.scrollTo(10, 0);
   };
@@ -22,12 +26,11 @@ const ProductGrid = ({ products, addToCartProduct,addToWishListProduct }) => {
     setState(item);
   };
 
-  const handleAddToCart =(data)=>{
+  const handleAddToCart = (data) => {
     addToCartProduct(data);
-  }
+  };
 
   return (
-
     <div className="product-wrap">
       <div className="row align-items-center">
         {products.length > 0 &&
@@ -51,25 +54,27 @@ const ProductGrid = ({ products, addToCartProduct,addToWishListProduct }) => {
                       </button>
                     </li>
                     <li>
-                        <button
-                            data-bs-toggle="tooltip"
-                            data-bs-html="true"
-                            title="Add to Cart"
-                            onClick={() => handleClickOpen(product)}
-                          >
-                            <i className="fi ti-eye"></i>
-                        </button>
-                    </li>
-                    <li>
                       <button
+                        data-bs-toggle="tooltip"
+                        data-bs-html="true"
+                        title="Add to Cart"
+                        onClick={() => handleClickOpen(product)}
+                      >
+                        <i className="fi ti-eye"></i>
+                      </button>
+                    </li>
+                    {isLoggedIn && (
+                      <li>
+                        <button
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="Add to Cart"
                           onClick={() => addToWishListProduct(product)}
-                      >
+                        >
                           <i className="fi flaticon-like"></i>
-                      </button>
-                    </li>
+                        </button>
+                      </li>
+                    )}
                   </ul>
                   <div className="offer-thumb">
                     <span>{`${product.discount} %`}</span>
@@ -77,19 +82,49 @@ const ProductGrid = ({ products, addToCartProduct,addToWishListProduct }) => {
                 </div>
                 <div className="product-content">
                   <h3>
-                    <Link onClick={ClickHandler} to={`/product-single/${product.id}`}>
+                    <Link
+                      onClick={ClickHandler}
+                      to={`/product-single/${product.id}`}
+                    >
                       {product.title}
                     </Link>
                   </h3>
-                  <div style={{display: "flex",flexDirection: "row",justifyContent: "space-between",}}>
-                  <Button className="cBtnTheme" onClick={()=>handleClickOpen(product)} style={{border: 'none',alignSelf:"flex-end" }}>View</Button>
-                  <Button className="cBtnTheme" onClick={() => handleAddToCart(product)} style={{border: 'none',alignSelf:"flex-end" }}>Add to Cart</Button>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <Button
+                      className="cBtnTheme"
+                      onClick={() => handleClickOpen(product)}
+                      style={{ border: "none", alignSelf: "flex-end" }}
+                    >
+                      View
+                    </Button>
+                    <Button
+                      className="cBtnTheme"
+                      onClick={() => handleAddToCart(product)}
+                      style={{ border: "none", alignSelf: "flex-end" }}
+                    >
+                      Add to Cart
+                    </Button>
                   </div>
                   <div className="product-btm">
                     <div className="product-price">
                       <ul>
-                        <li>₹{product.price} <span style={{fontSize:"75%"}}>/</span> {product.unit}</li>
-                        <li>₹{parseFloat((product.discount/100+1)*product.price).toFixed(2) }</li>
+                        <li>
+                          ₹{product.price}{" "}
+                          <span style={{ fontSize: "75%" }}>/</span>{" "}
+                          {product.unit}
+                        </li>
+                        <li>
+                          ₹
+                          {parseFloat(
+                            (product.discount / 100 + 1) * product.price
+                          ).toFixed(2)}
+                        </li>
                       </ul>
                     </div>
                     <div className="product-ratting">

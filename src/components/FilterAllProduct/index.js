@@ -3,6 +3,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import classnames from "classnames";
 import ProductGrid from "../ProductGrid";
 import ProductList from "../ProductList";
+import { getLocalUserDetail } from "../../apiService/localStorageItem";
 
 const FilterAllProduct = ({
   products,
@@ -10,6 +11,19 @@ const FilterAllProduct = ({
   addToWishListProduct,
 }) => {
   const [activeTab, setActiveTab] = useState("1");
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  React.useEffect(() => {
+    window.addEventListener("storage", logFunc);
+    logFunc();
+  }, []);
+  const logFunc = () => {
+    let res = getLocalUserDetail();
+    if (res) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  };
 
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
@@ -44,12 +58,15 @@ const FilterAllProduct = ({
         </div>
         <div className="shoping-product">
           {/* changes 08/12/2022 */}
-          <span>Showing Products {products.length} Of {products.length}  Result</span>
+          <span>
+            Showing Products {products.length} Of {products.length} Result
+          </span>
         </div>
       </div>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
           <ProductGrid
+            isLoggedIn={isLoggedIn}
             addToCartProduct={addToCartProduct}
             addToWishListProduct={addToWishListProduct}
             products={products}
@@ -58,6 +75,7 @@ const FilterAllProduct = ({
 
         <TabPane tabId="2">
           <ProductList
+            isLoggedIn={isLoggedIn}
             addToCartProduct={addToCartProduct}
             addToWishListProduct={addToWishListProduct}
             products={products}
