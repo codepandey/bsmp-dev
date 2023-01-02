@@ -1,4 +1,4 @@
-import { RECEIVE_PRODUCTS } from "../action/type";
+import { RECEIVE_PRODUCTS } from "../actions/type";
 
 const initialState = {
   products: [],
