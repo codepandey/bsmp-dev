@@ -20,6 +20,7 @@ import {
 import moment from "moment";
 import { deleteSubItem } from "../../apiService/deleteSubItem";
 import deleteCartItem from "../../apiService/deleteCartItem";
+import { addToFav } from "../../apiService/favourite";
 
 export const fetchProductsBegin = () => ({
   type: types.FETCH_PRODUCTS_BEGIN,
