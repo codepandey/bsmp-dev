@@ -7,14 +7,15 @@ const PageTitle = (props) => {
   console.log(loc.search);
   React.useEffect(() => {
     if (loc.search === "?category=sweets") {
-      setImage("tpbgimg-2");
+      setImage("tpbgimg-3");
     } else if (loc.search === "?category=dairy_products") {
+      setImage("tpbgimg-4");
+    } else if (loc.search === "?category=vegetables") {
       setImage("tpbgimg-1");
     }
+   
   }, [props.cat]);
-  // if (loc.search === "?category=sweets") {
-  //   setImage("tpbgimg-2");
-  // }
+ 
 
   return (
     <div

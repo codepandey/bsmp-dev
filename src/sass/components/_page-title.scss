@@ -128,3 +128,23 @@
   }
   background: url(../../images/all_in_one.png) no-repeat center top / contain;
 }
+.tpbgimg-3 {
+  @media (min-width: 767px) {
+    background-size: 100% 100%;
+    min-height: 500px;
+  }
+  @media (max-width: 767px) {
+    min-height: 250px;
+  }
+  background: url(../../images/sweets_bg.jpg) no-repeat center top / contain;
+}
+.tpbgimg-4 {
+  @media (min-width: 767px) {
+    background-size: 100% 100%;
+    min-height: 500px;
+  }
+  @media (max-width: 767px) {
+    min-height: 250px;
+  }
+  background: url(../../images/diary_bg.jpg) no-repeat center top / contain;
+}
