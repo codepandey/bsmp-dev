@@ -9,6 +9,7 @@ export const wishListReducer = (state = init, action) => {
   switch (action.type) {
     case ADD_TO_WISHLIST:
       const productId = action.product.id;
+      const favId = action.favId;
       if (
         state.w_list.findIndex((product) => product.id === productId) !== -1
       ) {
@@ -25,6 +26,7 @@ export const wishListReducer = (state = init, action) => {
           ...state.w_list,
           {
             ...action.product,
+            favId,
           },
         ],
       };
@@ -33,6 +35,7 @@ export const wishListReducer = (state = init, action) => {
       const w_list = state.w_list.filter(
         (product) => product.id !== w_productId
       );
+      toast.error("Item removed from WishList");
       return { ...state, w_list };
     default:
       return state;

@@ -56,50 +56,50 @@ const SwitchRoute = () => {
       {location.pathname !== "/login" && (
         <Navbar location={location.pathname} hClass={"header-style-1"} />
       )}
-      <AnimatePresence exitBeforeEnter>
-        <Switch key={location.pathname} location={location}>
-          <Route exact path="/" element={<Homepage />} />
-          <Route path="/home" component={Homepage} />
-          <Route path="/home2" component={Homepage2} />
-          <Route path="/about" component={AboutPage} />
-          <Route path="/shop" component={ShopPage} />
-          <Route path="/product-single/:id" component={ProductDetailsPage} />
-          <Route
-            path="/checkout"
-            component={() => (
-              <AuthenticatedRoute>
-                <CheckoutPage />
-              </AuthenticatedRoute>
-            )}
-          />
-          <Route path="/order_received" component={OrderRecived} />
-          <Route path="/cart" component={CartPage} />
-          <Route path="/wishlist" component={WishlistPage} />
-          <Route
-            path="/order-history"
-            component={() => (
-              <AuthenticatedRoute>
-                <OrderHistory />
-              </AuthenticatedRoute>
-            )}
-          />
-          {/* <Route path="/project-single" component={ProjectSinglePage} /> */}
-          <Route path="/subscription" component={ProjectPage} />
-          <Route
-            path="/my-subscription"
-            component={() => (
-              <AuthenticatedRoute>
-                <MySubscription />
-              </AuthenticatedRoute>
-            )}
-          />
-          {/* <Route path="/404" component={ErrorPage} /> */}
-          <Route path="/contact" component={ContactPage} />
-          {/* <Route path="/blog" component={BlogPage} /> */}
-          {/* <Route path="/blog-left-sidebar" component={BlogPageLeft} /> */}
-          {/* <Route path="/blog-fullwidth" component={BlogPageFullwidth} /> */}
-          {/* <Route path="/blog-single/:id" component={BlogDetails} /> */}
-          {/* <Route
+      {/* <AnimatePresence exitBeforeEnter> */}
+      <Switch key={location.pathname} location={location}>
+        <Route exact path="/" element={<Homepage />} />
+        <Route path="/home" component={Homepage} />
+        <Route path="/home2" component={Homepage2} />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/shop" component={ShopPage} />
+        <Route path="/product-single/:id" component={ProductDetailsPage} />
+        <Route
+          path="/checkout"
+          component={() => (
+            <AuthenticatedRoute>
+              <CheckoutPage />
+            </AuthenticatedRoute>
+          )}
+        />
+        <Route path="/order_received" component={OrderRecived} />
+        <Route path="/cart" component={CartPage} />
+        <Route path="/wishlist" component={WishlistPage} />
+        <Route
+          path="/order-history"
+          component={() => (
+            <AuthenticatedRoute>
+              <OrderHistory />
+            </AuthenticatedRoute>
+          )}
+        />
+        {/* <Route path="/project-single" component={ProjectSinglePage} /> */}
+        <Route path="/subscription" component={ProjectPage} />
+        <Route
+          path="/my-subscription"
+          component={() => (
+            <AuthenticatedRoute>
+              <MySubscription />
+            </AuthenticatedRoute>
+          )}
+        />
+        {/* <Route path="/404" component={ErrorPage} /> */}
+        <Route path="/contact" component={ContactPage} />
+        {/* <Route path="/blog" component={BlogPage} /> */}
+        {/* <Route path="/blog-left-sidebar" component={BlogPageLeft} /> */}
+        {/* <Route path="/blog-fullwidth" component={BlogPageFullwidth} /> */}
+        {/* <Route path="/blog-single/:id" component={BlogDetails} /> */}
+        {/* <Route
             path="/blog-single-left-sidebar/:id"
             component={BlogDetailsLeftSiide}
           />
@@ -107,26 +107,26 @@ const SwitchRoute = () => {
             path="/blog-single-fullwidth/:id"
             component={BlogDetailsFull}
           /> */}
-          <Route
-            path="/login"
-            component={() => (
-              <UnauthenticatedRoute>
-                <LoginPage />
-              </UnauthenticatedRoute>
-            )}
-          />
-          <Route path="/register" component={SignUpPage} />
-          {/* <Route path="/forgot-password" component={ForgotPassword} /> */}
-          <Route
-            path="/setup-vacation"
-            component={() => (
-              <AuthenticatedRoute>
-                <VacationSetupPage />
-              </AuthenticatedRoute>
-            )}
-          />
-        </Switch>
-      </AnimatePresence>
+        <Route
+          path="/login"
+          component={() => (
+            <UnauthenticatedRoute>
+              <LoginPage />
+            </UnauthenticatedRoute>
+          )}
+        />
+        <Route path="/register" component={SignUpPage} />
+        {/* <Route path="/forgot-password" component={ForgotPassword} /> */}
+        <Route
+          path="/setup-vacation"
+          component={() => (
+            <AuthenticatedRoute>
+              <VacationSetupPage />
+            </AuthenticatedRoute>
+          )}
+        />
+      </Switch>
+      {/* </AnimatePresence> */}
     </>
   );
 };

@@ -113,7 +113,7 @@ const CheckoutSection = ({ cartList, addToOrderHistory }) => {
   useEffect(() => {
     let cc = localStorage.getItem("Contact");
     setForms({ ...forms, ...DemoAddress, phone: cc });
-  }, [forms]);
+  }, []);
   useEffect(() => {
     (async () => {
       const res = localStorage.getItem("loggedUserId");

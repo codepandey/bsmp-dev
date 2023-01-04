@@ -7,6 +7,7 @@ import {
   getLocalConvId,
   setLocalConvId,
 } from "../../apiService/localStorageItem";
+import { AnimatePresence } from "framer-motion";
 
 const App = () => {
   // React.useEffect(() => {
@@ -18,7 +19,9 @@ const App = () => {
 
   return (
     <div className="App" id="scrool">
-      <AllRoute />
+      <AnimatePresence>
+        <AllRoute />
+      </AnimatePresence>
       <ToastContainer
         position="top-center"
         autoClose={2000}

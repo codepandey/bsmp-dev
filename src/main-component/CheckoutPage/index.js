@@ -11,6 +11,7 @@ import { checkOutService } from "../../apiService/checkout";
 
 const CheckoutPage = ({ cartList }) => {
   useEffect(() => {
+    console.log("cameCheckout ");
     const checkSer = async () => {
       const res = await checkOutService();
       console.log(res);

@@ -20,7 +20,7 @@ import {
 import moment from "moment";
 import { deleteSubItem } from "../../apiService/deleteSubItem";
 import deleteCartItem from "../../apiService/deleteCartItem";
-import { addToFav } from "../../apiService/favourite";
+import { addToFav, deleteFavProduct } from "../../apiService/favourite";
 
 export const fetchProductsBegin = () => ({
   type: types.FETCH_PRODUCTS_BEGIN,
@@ -40,6 +40,7 @@ export const addToCart = (product) => async (dispatch) => {
     apiResponse,
   });
 };
+
 export const addToCartWithQuantity =
   (product, quantity) => async (dispatch) => {
     toast.success("Item Added to Cart");
@@ -244,20 +245,36 @@ export const decrementSubQuantity = (product) => async (dispatch) => {
   });
 };
 
-export const addToWishList = (product) => async (dispatch) => {
-  const apiRes = await addToFav(product.id);
-  console.log(apiRes.product.id, "apiRes");
-  if (apiRes?.product?.id) {
-    // toast.success("Item added to WishList");
-    dispatch({
-      type: ADD_TO_WISHLIST,
-      product,
-    });
+export const addToWishList = (product) => async (dispatch, getState) => {
+  const { wishList } = await getState();
+  // console.log(wishList.w_list, "www");
+  const isThere =
+    wishList?.w_list.length == 0
+      ? []
+      : wishList?.w_list.filter((i) => i.id === product.id);
+  let apiRes = "";
+  if (isThere.length == 0) {
+    console.log("if");
+    apiRes = await addToFav(product.id);
+    if (apiRes?.product?.id) {
+      dispatch({
+        type: ADD_TO_WISHLIST,
+        product,
+        favId: apiRes.id,
+      });
+    }
+  } else {
+    console.log("else");
+    apiRes = await deleteFavProduct(isThere[0].favId);
+    console.log(apiRes, "elseApiRes");
   }
 };
 
-export const removeFromWishList = (id) => (dispatch) => {
-  toast.error("Item removed from WishList");
+export const removeFromWishList = (id) => async (dispatch, getState) => {
+  const { wishList } = await getState();
+  const isThere = wishList?.w_list.filter((i) => i.id === id);
+  let apiRes = await deleteFavProduct(isThere[0].favId);
+
   dispatch({
     type: REMOVE_FROM_WISHLIST,
     id,

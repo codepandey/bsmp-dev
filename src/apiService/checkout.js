@@ -11,8 +11,9 @@ const URL = host + baseUrl + bsCart + checkOut;
 const convId = getLocalConvId();
 const userId = localStorage.getItem("loggedUserId");
 export const checkOutService = async () => {
+  const USER_ID1 = USER_ID.replace("?", "&");
   try {
-    const response = await fetch(URL + CONV_ID + convId + USER_ID + userId, {
+    const response = await fetch(URL + CONV_ID + convId + USER_ID1 + userId, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
