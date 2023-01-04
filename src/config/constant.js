@@ -14,5 +14,5 @@ export const addEmailName = "bs-user/update-info";
 export const CONV_ID = "?convId=";
 export const USER_ID = "?userId=";
 export const place_order = "bs-order";
-export const add_fav = "bs-favourite";
+export const add_fav = "bs-favourite/";
 export const checkOut = "checkout";
