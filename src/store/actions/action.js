@@ -95,10 +95,8 @@ export const addSubToCart = (product, subscription) => async (dispatch) => {
 
 export const removeFromCart = (product_id) => async (dispatch) => {
   const apiResponse = await deleteCartItem(product_id);
-  const responseArr = apiResponse?.itemDetails?.filter(
-    (item) => item.productDTO.id === product_id
-  );
-  if (responseArr?.length == 0 || apiResponse == "Cart is Empty!") {
+
+  if (apiResponse.status == 200) {
     toast.success("Item Removed from Cart");
     dispatch({
       type: types.REMOVE_FROM_CART,
@@ -267,6 +265,11 @@ export const addToWishList = (product) => async (dispatch, getState) => {
     console.log("else");
     apiRes = await deleteFavProduct(isThere[0].favId);
     console.log(apiRes, "elseApiRes");
+
+    dispatch({
+      type: REMOVE_FROM_WISHLIST,
+      id: product.id,
+    });
   }
 };
 

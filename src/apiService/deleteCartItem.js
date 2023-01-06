@@ -7,7 +7,7 @@ const deleteCartItem = async (id) => {
     const response = await fetch(URL + id + CONV_ID + convId, {
       method: "GET",
     });
-    const format = await response.json();
+    const format = response;
     return format;
   } catch (error) {
     alert(error);
