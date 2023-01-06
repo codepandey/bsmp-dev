@@ -149,7 +149,7 @@ class Header extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-7">
+              <div className="col-lg-8">
                 <div
                   id="navbar"
                   className="collapse navbar-collapse navigation-holder"
@@ -182,6 +182,7 @@ class Header extends Component {
                       </Link>
                     </li> */}
                     <li className="menu-item-has-children">
+                      
                       <span
                         className={
                           this.props?.location?.includes("shop") ? "active" : ""
@@ -189,6 +190,7 @@ class Header extends Component {
                         onClick={() => openDropDown("category")}
                       >
                         Category
+                      &nbsp; <i class="fa fa-caret-down"></i>
                       </span>
                       <ul
                         className="sub-menu"
@@ -288,6 +290,7 @@ class Header extends Component {
                         onClick={() => openDropDown("subscription")}
                       >
                         Subscription
+                      &nbsp; <i class="fa fa-caret-down"></i>
                       </span>
                       <ul
                         className="sub-menu"
@@ -353,7 +356,10 @@ class Header extends Component {
                       </Link>
                     </li> */}
                     <li className="menu-item-has-children">
-                      <span onClick={() => openDropDown("more")}>More</span>
+                      <span onClick={() => openDropDown("more")}>More
+                      &nbsp; <i class="fa fa-caret-down"></i>
+                      </span>
+                      
                       <ul
                         className="sub-menu"
                         style={
@@ -393,6 +399,7 @@ class Header extends Component {
                       <li className="menu-item-has-children">
                         <span onClick={() => openDropDown("logout")}>
                           <span>Logout</span>
+                          &nbsp; <i class="fa fa-caret-down"></i>
                         </span>
                         <ul
                           className="sub-menu"
@@ -425,7 +432,7 @@ class Header extends Component {
                   </ul>
                 </div>
               </div>
-              <div className="col-lg-2">
+              <div className="col-lg-1">
                 <div className="header-right d-flex">
                   {/* <div className="header-profile-form-wrapper">
                     <button
