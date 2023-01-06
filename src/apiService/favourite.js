@@ -41,7 +41,7 @@ export const getFavProduct = async () => {
 export const deleteFavProduct = async (data) => {
   const userData = getLocalUserDetail();
   const body = {
-    productId: data,
+    id: data,
     userId: userData.id,
   };
   try {
@@ -52,7 +52,7 @@ export const deleteFavProduct = async (data) => {
         "Content-Type": "application/json",
       },
     });
-    const format = await response.json();
+    const format = response;
     return format;
   } catch (error) {
     alert(error);
