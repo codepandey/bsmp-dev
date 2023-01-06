@@ -101,10 +101,13 @@ const DefaultModal = ({
                       <i className="fa fa-star" aria-hidden="true"></i>
                     </li>
                   </ul>
-                  <p>
+                  {/* <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Nunc quis ultrices lectus lobortis, dolor et tempus porta,
                     leo mi efficitur ante, in varius felis sem ut mauris.
+                  </p> */}
+                  <p>
+                  {product && product.description}
                   </p>
                   {/* <div className="product-filter-item color">
                     <div className="color-name">
