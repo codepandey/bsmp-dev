@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import Slider from "react-slick";
 import {Link} from 'react-router-dom'
 import "slick-carousel/slick/slick.css";
@@ -12,9 +12,44 @@ import team4 from '../../images/team/img-4.jpg'
 
 
 
-class TeamSection extends Component {
-    render() {
 
+
+class TeamSection extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      employee: [],      
+    };
+  }
+
+
+componentDidMount() {
+  this.getTeamList();
+}
+
+// UserList() {
+//   $.getJSON('https://randomuser.me/api/')
+//     .then(({ results }) => this.setState({ person: results }));
+// }
+
+  async getTeamList() {
+    let URL = 'https://run.mocky.io/v3/d1345f97-947a-4f10-97b8-e92aa38f646d'
+    let response = await fetch(URL);
+    // let result = await response.json();
+    let result = await response.json().then((results) => {
+      console.log('result ', results);
+      this.setState({employee: results});
+    });
+    
+    
+
+   
+  }
+
+
+    render() {
+      // const { employee } = this.state;
         const ClickHandler = () =>{
             window.scrollTo(10, 0);
          }
@@ -71,24 +106,24 @@ class TeamSection extends Component {
         const Teams = [
             {
               tImg:team1,
-              title:'Chris Fletcher',
+              title:'Vishnu',
               des:'Ceo Beximo',
             },
             {
               tImg:team2,
-              title:'Ema Aliana',
+              title:'Mukul',
               des:'Marketing Manager',
-            },
+            },         
             {
-              tImg:team3,
-              title:'John Clyne',
-              des:'Marketing Officer',
-            },
+              tImg:team2,
+              title:'Virender',
+              des:'Manager',
+            },         
             {
-              tImg:team4,
-              title:'Lily Jameson',
+              tImg:team2,
+              title:'Ankit',
               des:'Marketing Manager',
-            },
+            },         
         ]
 
         return (
@@ -97,7 +132,43 @@ class TeamSection extends Component {
                     <div className="row">
                         <div className="col-lg-6 offset-lg-3">
                             <div className="section-title">
-                                <h2>Our Expert <span>Team</span></h2>
+                                <h2>Our <span>Partners</span></h2>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    industry has been the industry's standard consectetur adipisicing elit.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col col-xs-12">
+                            <div className="team-grids team-slider owl-carousel">
+                                <Slider {...settings}>
+                                    {this.state.employee.map((team, tms) =>(
+                                        <div className="grid">
+                                            {/* <div className="img-holder">
+                                                <img src={team.tImg} alt=""/>
+                                            </div> */}
+                                            <div className="details">
+                                                <h4>{team.name}</h4>
+                                                {/* <p>{team.des}</p> */}
+                                                {/* <ul>
+                                                    <li><Link onClick={ClickHandler} to="/about"><i className="ti-facebook"></i></Link></li>
+                                                    <li><Link onClick={ClickHandler} to="/about"><i className="ti-twitter-alt"></i></Link></li>
+                                                    <li><Link onClick={ClickHandler} to="/about"><i className="ti-linkedin"></i></Link></li>
+                                                    <li><Link onClick={ClickHandler} to="/about"><i className="ti-instagram"></i></Link></li>
+                                                </ul> */}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </Slider>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="container section-padding">
+                    <div className="row">
+                        <div className="col-lg-6 offset-lg-3">
+                            <div className="section-title">
+                                <h2> <span>Employees of the month</span></h2>
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting
                                     industry has been the industry's standard consectetur adipisicing elit.</p>
                             </div>
@@ -115,12 +186,12 @@ class TeamSection extends Component {
                                             <div className="details">
                                                 <h4>{team.title}</h4>
                                                 <p>{team.des}</p>
-                                                <ul>
+                                                {/* <ul>
                                                     <li><Link onClick={ClickHandler} to="/about"><i className="ti-facebook"></i></Link></li>
                                                     <li><Link onClick={ClickHandler} to="/about"><i className="ti-twitter-alt"></i></Link></li>
                                                     <li><Link onClick={ClickHandler} to="/about"><i className="ti-linkedin"></i></Link></li>
                                                     <li><Link onClick={ClickHandler} to="/about"><i className="ti-instagram"></i></Link></li>
-                                                </ul>
+                                                </ul> */}
                                             </div>
                                         </div>
                                     ))}

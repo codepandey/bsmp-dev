@@ -14,7 +14,6 @@ const ShopPage = ({ addToCart, addToWishList, ...props }) => {
   const cat = window.location.href.split("=")[1];
   useEffect(() => {
     const category = window.location.href.split("=")[1];
-    console.log(category);
     const getProducts = async () => {
       const pArray = await api();
       const productsArray = pArray.filter((item) => {

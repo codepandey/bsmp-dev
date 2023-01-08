@@ -72,10 +72,12 @@
 				&:before{
 					position: absolute;
 					left: 50%;
-					bottom: 15px;
-					width: 15px;
+					bottom: 20px;
+					width:30px;
 					height: 15px;
-					content: "\f11c";
+					// content: "\f11c";
+					content: url(../../images/drop1.png);
+					// background-image: url(../../images/drop.png);
 					font-family: 'flaticon';
 					transform: translate(-50%, -50%);
 					opacity: 0;
@@ -105,10 +107,11 @@
 				&:before{
 					position: absolute;
 					left: 50%;
-					bottom: 15px;
+					bottom: 20px;
 					width: 15px;
 					height: 15px;
-					content: "\f11c";
+					// content: "\f11c";
+					content: url(../../images/drop1.png);
 					font-family: 'flaticon';
 					transform: translate(-50%, -50%);
 					opacity: 0;
