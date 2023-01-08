@@ -16,36 +16,32 @@ import team4 from '../../images/team/img-4.jpg'
 
 class TeamSection extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      employee: [],      
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     employee: [],      
+  //   };
+  // }
 
 
-componentDidMount() {
-  this.getTeamList();
-}
+// componentDidMount() {
+//   this.getTeamList();
+// }
 
 // UserList() {
 //   $.getJSON('https://randomuser.me/api/')
 //     .then(({ results }) => this.setState({ person: results }));
 // }
 
-  async getTeamList() {
-    let URL = 'https://run.mocky.io/v3/d1345f97-947a-4f10-97b8-e92aa38f646d'
-    let response = await fetch(URL);
-    // let result = await response.json();
-    let result = await response.json().then((results) => {
-      console.log('result ', results);
-      this.setState({employee: results});
-    });
-    
-    
-
-   
-  }
+  // async getTeamList() {
+  //   let URL = 'https://run.mocky.io/v3/d1345f97-947a-4f10-97b8-e92aa38f646d'
+  //   let response = await fetch(URL);
+  //   // let result = await response.json();
+  //   let result = await response.json().then((results) => {
+  //     console.log('result ', results);
+  //     this.setState({employee: results});
+  //   });   
+  // }
 
 
     render() {
@@ -125,6 +121,29 @@ componentDidMount() {
               des:'Marketing Manager',
             },         
         ]
+        const Teams2 = [
+            {
+              tImg:team1,
+              title:'Vishnu',
+              designation: 'CEO',
+              des:'Ceo Beximo',
+            },
+            {
+              tImg:team2,
+              title:'Mukul',
+              des:'Marketing Manager',
+            },         
+            {
+              tImg:team2,
+              title:'Virender',
+              des:'Manager',
+            },         
+            {
+              tImg:team2,
+              title:'Ankit',
+              des:'Marketing Manager',
+            },         
+        ]
 
         return (
             <section className="team-section section-padding">
@@ -142,13 +161,13 @@ componentDidMount() {
                         <div className="col col-xs-12">
                             <div className="team-grids team-slider owl-carousel">
                                 <Slider {...settings}>
-                                    {this.state.employee.map((team, tms) =>(
+                                    {Teams2.map((team, tms) =>(
                                         <div className="grid">
-                                            {/* <div className="img-holder">
+                                            <div className="img-holder">
                                                 <img src={team.tImg} alt=""/>
-                                            </div> */}
+                                            </div>
                                             <div className="details">
-                                                <h4>{team.name}</h4>
+                                                <h4>{team.title}</h4>
                                                 {/* <p>{team.des}</p> */}
                                                 {/* <ul>
                                                     <li><Link onClick={ClickHandler} to="/about"><i className="ti-facebook"></i></Link></li>
