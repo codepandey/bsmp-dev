@@ -59,7 +59,7 @@ const SwitchRoute = () => {
       {/* <AnimatePresence exitBeforeEnter> */}
       <Switch key={location.pathname} location={location}>
         <Route exact path="/" component={Homepage} />
-        <Route path="/home" component={Homepage} />
+        <Route path="/home" component={Homepage} />       
         <Route path="/home2" component={Homepage2} />
         <Route path="/about" component={AboutPage} />
         <Route path="/shop" component={ShopPage} />

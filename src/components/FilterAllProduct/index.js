@@ -59,12 +59,23 @@ const FilterAllProduct = ({
         <div className="shoping-product">
           {/* changes 08/12/2022 */}
           <span>
-            Showing Products {products.length} Of {products.length} Result
+            {
+            products.length > 0 && (
+             <p>
+              Showing Products {products.length} Of {products.length} Result
+             </p> 
+            )
+          }
           </span>
         </div>
       </div>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
+        {
+            products.length === 0 && (              
+              <div style={{textAlign: 'center'}}>Coming Soon !!! <span >&#128522;</span></div>
+            )
+          }
           <ProductGrid
             isLoggedIn={isLoggedIn}
             addToCartProduct={addToCartProduct}
@@ -74,6 +85,11 @@ const FilterAllProduct = ({
         </TabPane>
 
         <TabPane tabId="2">
+          {
+            products.length === 0 && (
+              <div style={{textAlign: 'center'}}>Coming Soon !!! <span >&#128522;</span></div>
+            )
+          }
           <ProductList
             isLoggedIn={isLoggedIn}
             addToCartProduct={addToCartProduct}
