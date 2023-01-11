@@ -111,7 +111,7 @@ class Header extends Component {
                     to="/home"
                   >
                     <img
-                      style={{ height: "5rem", width: "5rem" }}
+                      style={{ height: "4.5rem", width: "4rem" }}
                       src={Logo2}
                       alt="icon"
                     />
@@ -190,7 +190,7 @@ class Header extends Component {
                         onClick={() => openDropDown("category")}
                       >
                         Category
-                      &nbsp; <i class="fa fa-caret-down"></i>
+                      &nbsp; <i className="fa fa-caret-down"></i>
                       </span>
                       <ul
                         className="sub-menu"
@@ -290,7 +290,7 @@ class Header extends Component {
                         onClick={() => openDropDown("subscription")}
                       >
                         Subscription
-                      &nbsp; <i class="fa fa-caret-down"></i>
+                      &nbsp; <i className="fa fa-caret-down"></i>
                       </span>
                       <ul
                         className="sub-menu"
@@ -357,7 +357,7 @@ class Header extends Component {
                     </li> */}
                     <li className="menu-item-has-children">
                       <span onClick={() => openDropDown("more")}>More
-                      &nbsp; <i class="fa fa-caret-down"></i>
+                      &nbsp; <i className="fa fa-caret-down"></i>
                       </span>
                       
                       <ul
@@ -399,7 +399,7 @@ class Header extends Component {
                       <li className="menu-item-has-children">
                         <span onClick={() => openDropDown("logout")}>
                           <span>Logout</span>
-                          &nbsp; <i class="fa fa-caret-down"></i>
+                          &nbsp; <i className="fa fa-caret-down"></i>
                         </span>
                         <ul
                           className="sub-menu"
