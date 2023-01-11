@@ -10,11 +10,13 @@ import Transitions from "../router/transition";
 import { checkOutService } from "../../apiService/checkout";
 
 const CheckoutPage = ({ cartList }) => {
+  const [checkoutRes, setCheckoutRes] = React.useState();
   useEffect(() => {
     console.log("cameCheckout ");
     const checkSer = async () => {
       const res = await checkOutService();
       console.log(res);
+      setCheckoutRes(res);
     };
     checkSer();
   }, []);
@@ -23,7 +25,7 @@ const CheckoutPage = ({ cartList }) => {
       <Fragment>
         {/* <Navbar hClass={"header-style-1"} /> */}
         {/* <PageTitle pageTitle={"Checkout"} pagesub={"Checkout"} /> */}
-        <CheckoutSection cartList={cartList} />
+        <CheckoutSection cartList={cartList} checkoutRes={checkoutRes} />
         <Footer />
         <Scrollbar />
       </Fragment>
