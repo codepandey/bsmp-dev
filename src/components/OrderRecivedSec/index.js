@@ -1,23 +1,27 @@
-import React from 'react';
-import {Link} from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
-import {totalPrice} from "../../utils";
-import './style.scss'
+import { totalPrice } from "../../utils";
+import "./style.scss";
 
-const OrderRecivedSec = ({cartList}) => {
-    return(
-        <section className="cart-recived-section section-padding">
-            <div className="container">
-                <div className="row">
-                    <div className="order-top">
-                        <h2>Thank You For Your Order! <span>your order has been recived</span></h2>
-                        <Link to='/home' className="theme-btn">Back Home</Link>
-                    </div>
-                    <Grid className="cartStatus">
+const OrderRecivedSec = ({ cartList }) => {
+  return (
+    <section className="cart-recived-section section-padding">
+      <div className="container">
+        <div className="row">
+          <div className="order-top">
+            <h2>
+              Thank You For Your Order! <span>your order has been recived</span>
+            </h2>
+            <Link to="/home" className="theme-btn">
+              Back Home
+            </Link>
+          </div>
+          {/* <Grid className="cartStatus">
                             <Grid container spacing={3}>
                                 <Grid item xs={12}>
                                     <Grid className="cartTotals">
@@ -49,11 +53,11 @@ const OrderRecivedSec = ({cartList}) => {
                                     </Grid>
                                 </Grid>
                             </Grid>
-                        </Grid>
-                </div>
-            </div>
-        </section>
-    )
-}
+                        </Grid> */}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default OrderRecivedSec;

@@ -101,10 +101,10 @@ export const cartReducer = (state = init, action) => {
     case ADDTO_ORDER_HISTORY:
       const cart = action.cartItem;
       const history = state.orderHistory;
-      const updateOrderHistory = history.push([...cart]);
+      // const updateOrderHistory = history.push([...cart]);
       return {
         ...state,
-        orderHistory: updateOrderHistory,
+        orderHistory: [],
         cart: [],
       };
     default:

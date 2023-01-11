@@ -16,7 +16,7 @@ import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { totalPrice } from "../../utils";
 
 // images
@@ -31,6 +31,7 @@ import "./style.scss";
 import { addToOrderHistory } from "../../store/actions/cartAction";
 import { connect } from "react-redux";
 import { addUserAddress, getUserAddress } from "../../apiService/userAddress";
+import { placeOrderService } from "../../apiService/placeOrder";
 
 const cardType = [
   {
@@ -61,7 +62,9 @@ const DemoAddress = {
   note: "home address",
 };
 
-const CheckoutSection = ({ cartList, addToOrderHistory }) => {
+const CheckoutSection = ({ cartList, addToOrderHistory, checkoutRes }) => {
+  console.log(checkoutRes, "checkoutRes");
+  const history = useHistory();
   // states
   const [tabs, setExpanded] = React.useState({
     cupon: false,
@@ -144,8 +147,12 @@ const CheckoutSection = ({ cartList, addToOrderHistory }) => {
   };
 
   //complete order
-  const handleCompleteOrder = (cartItem) => {
+  const handleCompleteOrder = async (cartItem) => {
+    const res = await placeOrderService(checkoutRes);
     addToOrderHistory(cartItem);
+    if (res.status == 200 || res.status == 201) {
+      history.push("/order_received");
+    }
   };
   const addAddress = async () => {
     const res = await addUserAddress(userData);
@@ -266,7 +273,7 @@ const CheckoutSection = ({ cartList, addToOrderHistory }) => {
                                 fullWidth
                                 label="Full Name"
                                 name="fname"
-                                disabled={true}
+                                // disabled={true}
                                 value={"Virender"}
                                 onChange={(e) => changeHandler(e)}
                                 type="text"
@@ -369,7 +376,7 @@ const CheckoutSection = ({ cartList, addToOrderHistory }) => {
                             <Grid item sm={6} xs={12}>
                               <TextField
                                 fullWidth
-                                disabled={true}
+                                // disabled={true}
                                 label="Email Adress"
                                 name="email"
                                 value={forms.email}
@@ -385,7 +392,7 @@ const CheckoutSection = ({ cartList, addToOrderHistory }) => {
                               <TextField
                                 fullWidth
                                 label="Phone No"
-                                disabled={true}
+                                // disabled={true}
                                 name="contact"
                                 value={userData.contact}
                                 onChange={(e) => changeHandler(e)}
@@ -652,16 +659,16 @@ const CheckoutSection = ({ cartList, addToOrderHistory }) => {
                       timeout="auto"
                     >
                       <Grid className="cardType">
-                        <Link
-                          to="/order_received"
+                        <Button
+                          // to="/order_received"
                           onClick={() => {
                             handleCompleteOrder(cartList);
                           }}
                           className="cBtn cBtnLarge cBtnTheme mt-20 ml-15"
-                          type="submit"
+                          // type="submit"
                         >
                           Place Order
-                        </Link>
+                        </Button>
                       </Grid>
                     </Collapse>
                   </Collapse>
