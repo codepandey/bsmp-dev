@@ -9,4 +9,8 @@ export const addToOrderHistory = (cartItem) => (dispatch) => {
     type: types.ADDTO_ORDER_HISTORY,
     cartItem,
   });
+  dispatch({
+    type: types.EMPTY_SUB_PRODUCT,
+    cartItem,
+  });
 };

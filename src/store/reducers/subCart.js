@@ -4,6 +4,7 @@ import {
   DECREMENT_SUB_QUANTITY,
   INCREMENT_SUB_QUANTITY,
   EDIT_SUB_PRODUCT,
+  EMPTY_SUB_PRODUCT,
 } from "../actions/type";
 import { minValueOne } from "../../utils";
 
@@ -120,6 +121,11 @@ export const subCartReducer = (state = init, action) => {
         return { ...state, subCart: subECart };
       }
       break;
+    case EMPTY_SUB_PRODUCT:
+      return {
+        ...state,
+        subCart: [],
+      };
     default:
       return state;
   }

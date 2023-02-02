@@ -11,7 +11,7 @@ export const getOrderHisotry = async () => {
         "Content-Type": "application/json",
       },
     });
-    const format = response;
+    const format = await response.json();
     return format;
   } catch (error) {
     alert(error);

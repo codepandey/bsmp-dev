@@ -143,12 +143,12 @@ const CheckoutSection = ({ cartList, addToOrderHistory, checkoutRes }) => {
     setForms({ ...forms, [e.target.name]: e.target.value });
     setUserData({ ...userData, [e.target.name]: e.target.value });
 
-    console.log(e.target.name, "form");
+    // console.log(e.target.name, "form");
   };
 
   //complete order
   const handleCompleteOrder = async (cartItem) => {
-    const res = await placeOrderService(checkoutRes);
+    const res = await placeOrderService(checkoutRes, selectedAddress);
     addToOrderHistory(cartItem);
     if (res.status == 200 || res.status == 201) {
       history.push("/order_received");

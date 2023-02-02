@@ -106,6 +106,7 @@ export const cartReducer = (state = init, action) => {
         ...state,
         orderHistory: [],
         cart: [],
+        subCart: [],
       };
     default:
       return state;

@@ -1,0 +1,124 @@
+<div className="row">
+  <Grid className="cartStatus" style={{ background: "#d5bbbb30" }}>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
+        {orderData.map((item) => {
+          return (
+            <Grid
+              className="cartTotals"
+              style={{ marginTop: 50 }}
+              key={item.number}
+            >
+              <h3>
+                Order Id{" "}
+                <span
+                  style={{
+                    fontSize: "0.91rem",
+                    fontWeight: "bold",
+                    color: "GrayText",
+                  }}
+                >
+                  {item.number}
+                </span>
+              </h3>
+
+              <Table
+                style={{
+                  boxShadow: "0px 5px 15px 0px rgba(62, 65, 159, 0.1)",
+                }}
+              >
+                <TableBody>
+                  {activeHeading === 0 &&
+                    item.cartDTO.itemDetails.map((i) => (
+                      <TableRow
+                        key={i.productDTO.id}
+                        style={{
+                          background: `${"radial-gradient(circle, rgba(163,160,160,1) 0%, rgba(255,255,255,1) 100%)"}`,
+                        }}
+                      >
+                        <TableCell>
+                          {/* <img style="image" src={item.proImg} alt="" />  */}
+                          <span
+                            style={{
+                              fontSize: "1.2rem",
+                              fontWeight: "600",
+                              margin: "1%",
+                            }}
+                          >
+                            {i.productDTO.title}
+                          </span>
+                        </TableCell>
+                        <TableCell align="justify">
+                          {" "}
+                          ₹{i.productDTO.price} x {i.itemQuantity}
+                        </TableCell>
+
+                        <TableCell align="right">
+                          ₹{i.productDTO.price * i.itemQuantity}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  {item.cartDTO.subscriptionDetails.map((i) => (
+                    <TableRow
+                      key={i.productDTO.id}
+                      style={{
+                        background: `${"radial-gradient(circle, rgba(240,221,204,1) 0%, rgba(255,255,255,1) 100%)"}`,
+                      }}
+                    >
+                      <TableCell>
+                        {/* <img style="image" src={item.proImg} alt="" />  */}
+                        <span
+                          style={{
+                            fontSize: "1.2rem",
+                            fontWeight: "600",
+                            margin: "1%",
+                          }}
+                        >
+                          {i.productDTO.title}
+                        </span>
+                      </TableCell>
+                      <TableCell align="justify">
+                        ₹{i.productDTO.price} x {i.itemQuantity} x {"x"} days
+                      </TableCell>
+                      <TableCell align="right">
+                        ₹{i.itemQuantity * i.productDTO.price}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                  <TableRow
+                    className="totalProduct"
+                    style={{
+                      background: `${"radial-gradient(circle, rgba(254,209,180,1) 0%, rgba(199,199,199,1) 50%, rgba(255,255,255,1) 100%)"}`,
+                    }}
+                  >
+                    <TableCell>{date.toLocaleString()}</TableCell>
+                    <TableCell align="justify">
+                      Paid <b> Online</b>(TID2132343454)
+                    </TableCell>
+                    <TableCell align="right">
+                      Total <b>₹ 3232</b>
+                    </TableCell>
+                  </TableRow>
+                  {/* <TableRow>
+                            <TableCell>Sub Price</TableCell>
+                            <TableCell align="right">
+                              ${totalPrice(cartList)}
+                            </TableCell>
+                          </TableRow> */}
+                  {/* <TableRow>
+                            <TableCell>
+                              <b>Total Price</b>
+                            </TableCell>
+                            <TableCell align="right">
+                              <b>${totalPrice(cartList)}</b>
+                            </TableCell>
+                          </TableRow> */}
+                </TableBody>
+              </Table>
+            </Grid>
+          );
+        })}
+      </Grid>
+    </Grid>
+  </Grid>
+</div>;

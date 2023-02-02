@@ -2,7 +2,7 @@ import { host, baseUrl, place_order } from "../config/constant";
 import { getLocalUserDetail } from "./localStorageItem";
 const placeOrderURL = host + baseUrl + place_order;
 
-export const placeOrderService = async (data) => {
+export const placeOrderService = async (data, addrId) => {
   const userData = await getLocalUserDetail();
   let body = {
     userId: userData.id,

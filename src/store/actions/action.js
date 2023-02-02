@@ -107,15 +107,27 @@ export const removeFromCart = (product_id) => async (dispatch) => {
 
 export const removeFromSubCart = (product_id) => async (dispatch) => {
   const apiResponse = await deleteSubItem(product_id);
-  const responseArr = apiResponse.subscriptionDetails.filter(
-    (item) => item.productDTO.id === product_id
-  );
-  if (responseArr.length == 0) {
+
+  if (
+    apiResponse.errorMessage ==
+    "Sorry You do not have any Items in your your the cart!:( "
+  ) {
     toast.success("Item Removed from Cart");
     dispatch({
       type: types.REMOVE_FROM_SUB_CART,
       product_id,
     });
+  } else {
+    const responseArr = apiResponse.subscriptionDetails.filter(
+      (item) => item.productDTO.id === product_id
+    );
+    if (responseArr.length == 0) {
+      toast.success("Item Removed from Cart");
+      dispatch({
+        type: types.REMOVE_FROM_SUB_CART,
+        product_id,
+      });
+    }
   }
 };
 export const editSubProductCartItem =

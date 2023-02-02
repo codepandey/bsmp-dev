@@ -1,0 +1,54 @@
+.order-history-box {
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  background-color: #9cc794;
+  user-select: none;
+  border-radius: 10px;
+}
+
+.order-id,
+.product-name,
+.title,
+.quantity,
+.date-of-purchase,
+.method,
+.total {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.title {
+  /* color: #656667; */
+  letter-spacing: 0.02em;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.order-id {
+  font-weight: bold;
+}
+.product-name {
+  text-transform: none;
+  color: rgb(35, 34, 34);
+  font-weight: 500;
+  font-size: 14px;
+  padding-inline: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+.total {
+  font-weight: bold;
+  color: #9c6103;
+}
+.details-button {
+  border: solid 1px;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  color: #447620;
+  border-color: #447620;
+}
