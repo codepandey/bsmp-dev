@@ -54,7 +54,6 @@ const LoginPage = (props) => {
 
   const changeHandler = (e) => {
     setValue({ ...value, [e.target.contact]: e.target.value });
-    // console.log(e.target.value);
     validator.showMessages();
   };
   const otpRendering = async () => {
@@ -79,7 +78,6 @@ const LoginPage = (props) => {
   const confirmOtp = async () => {
     setIsLoading(true);
     const responseconfirm = await confirmOtpService(contact, otp);
-    // console.log(responseconfirm, "res");
     setOtp("");
     if (
       (responseconfirm.status === 200 || responseconfirm.status === 202) &&

@@ -21,15 +21,15 @@ const CheckoutPage = ({ cartList }) => {
     checkSer();
   }, []);
   return (
-    <Transitions>
-      <Fragment>
-        {/* <Navbar hClass={"header-style-1"} /> */}
-        {/* <PageTitle pageTitle={"Checkout"} pagesub={"Checkout"} /> */}
-        <CheckoutSection cartList={cartList} checkoutRes={checkoutRes} />
-        <Footer />
-        <Scrollbar />
-      </Fragment>
-    </Transitions>
+    // <Transitions>
+    <Fragment>
+      {/* <Navbar hClass={"header-style-1"} /> */}
+      {/* <PageTitle pageTitle={"Checkout"} pagesub={"Checkout"} /> */}
+      <CheckoutSection cartList={cartList} checkoutRes={checkoutRes} />
+      <Footer />
+      <Scrollbar />
+    </Fragment>
+    // </Transitions>
   );
 };
 const mapStateToProps = (state) => {

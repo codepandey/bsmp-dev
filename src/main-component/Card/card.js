@@ -36,7 +36,6 @@ const Card = (props) => {
     // addSubProduct(product);
     ClickHandler();
   };
-  console.log(isLoggedIn, "isLoggedIn");
   return (
     <div className="p-4">
       <div className="section-title mb-0">

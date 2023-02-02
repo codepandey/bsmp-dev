@@ -12,15 +12,10 @@ const PageTitle = (props) => {
     } else if (loc.search === "?category=vegetables") {
       setImage("tpbgimg-1");
     }
-   
   }, [props.cat]);
- 
 
   return (
-    <div
-      className={`tp-breadcumb-area ${image}`}
-      style={{ marginTop: "7.345%" }}
-    >
+    <div className={`tp-breadcumb-area ${image}`} style={{ marginTop: "7%" }}>
       <div className="container">
         <div className="row">
           <div className="col-12">

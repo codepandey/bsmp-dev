@@ -2,8 +2,8 @@ import React, { Fragment, useState, useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import moment from "moment";
 import Calendar from "react-calendar";
-import "./style.css"
-const SubItemFullDisplay = ({ cartList,clicked }) => {
+import "./style.css";
+const SubItemFullDisplay = ({ cartList, clicked }) => {
   const [scheduleVariable, setScheduleVariable] = useState(0);
   const [startDate, setStartDate] = useState(new Date());
   const [scheduledDates, setScheduledDates] = useState([]);
@@ -11,18 +11,18 @@ const SubItemFullDisplay = ({ cartList,clicked }) => {
   useEffect(() => {
     console.log("cartItem", cartList);
     let arr;
-    setStartDate(cartList.subscription.startDate);
-    setScheduleVariable(cartList.subscription.frequency);
-    let sDate = new Date(cartList.subscription.startDate);
+    setStartDate(cartList.fromDate);
+    setScheduleVariable(cartList.frequency);
+    let sDate = new Date(cartList.fromDate);
     sDate.setHours(0, 0, 0, 0);
     let eDate = new Date(sDate.getFullYear(), sDate.getMonth() + 1, 0);
-    if (cartList.subscription.frequency === 1)
+    if (cartList.frequency == "daily")
       arr = getEverydayScheduleDates(sDate, eDate);
-    else if (cartList.subscription.frequency === 2)
+    else if (cartList.frequency == "3day")
       arr = get3DaysScheduleDates(sDate, eDate);
-    else if (cartList.subscription.frequency === 3)
+    else if (cartList.frequency == "alternate")
       arr = getAlternateScheduleDates(sDate, eDate);
-    setScheduledDates([...arr]);
+    setScheduledDates(arr);
     // setScheduleVariable([])
   }, []);
   const getEverydayScheduleDates = (start, end) => {
@@ -62,87 +62,88 @@ const SubItemFullDisplay = ({ cartList,clicked }) => {
   };
 
   return (
-    <Fragment><div className={clicked===cartList.id?"animate1":"out"}>
-      <div className="row p-4 ">
-        <div className="col-lg-6 mb-3">
-          <span style={{ fontWeight: "500", fontFamily: "inherit" }}>
-            Subscription Start Date
-          </span>
-          <div className="m-2">
-            <TextField
-              id="date"
-              // label="Choose your birthdate"e
-              style={{ width: "100%", fontFamily: "inherit" }}
-              type="date"
-              onChange={handleStartDateChange}
-              defaultValue={moment().format("YYYY-MM-DD")}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          </div>
-        </div>
-        <div className="col-lg-6 mb-3">
-          <p>Product Frequency</p>
-          <div className="row">
-            <div className="col-lg-4 col-4">
-              <button
-                className={
-                  scheduleVariable === 1 ? "schButton-active" : "schButton"
-                }
-                onClick={() => {
-                  setScheduleVariable(1);
+    <Fragment>
+      <div className={clicked === cartList.id ? "animate1" : "out"}>
+        <div className="row p-4 ">
+          <div className="col-lg-6 mb-3">
+            <span style={{ fontWeight: "500", fontFamily: "inherit" }}>
+              Subscription Start Date
+            </span>
+            <div className="m-2">
+              <TextField
+                id="date"
+                // label="Choose your birthdate"e
+                style={{ width: "100%", fontFamily: "inherit" }}
+                type="date"
+                onChange={handleStartDateChange}
+                defaultValue={moment().format("YYYY-MM-DD")}
+                InputLabelProps={{
+                  shrink: true,
                 }}
-              >
-                EveryDay
-              </button>
-            </div>
-            <div className="col-lg-4 col-4">
-              <button
-                className={
-                  scheduleVariable === 2 ? "schButton-active" : "schButton"
-                }
-                onClick={() => {
-                  setScheduleVariable(2);
-                }}
-              >
-                3 Days/Week
-              </button>
-            </div>
-            <div className="col-lg-4 col-4">
-              <button
-                className={
-                  scheduleVariable === 3 ? "schButton-active" : "schButton"
-                }
-                onClick={() => {
-                  setScheduleVariable(3);
-                }}
-              >
-                Alternate Day
-              </button>
+              />
             </div>
           </div>
-        </div>
-        <div className="col-lg-6 mb-3">
-          <div style={{ pointerEvents: "none" }}>
-            <Calendar
-              //  onChange={onChange}
-              showNavigation={false}
-              defaultValue={startDate}
-              tileClassName={({ date, view }) => {
-                if (
-                  scheduledDates.find(
-                    (x) => x === moment(date).format("DD-MM-YYYY")
-                  )
-                ) {
-                  return "highlight";
-                }
-              }}
-              minDate={new Date()}
-            />
+          <div className="col-lg-6 mb-3">
+            <p>Product Frequency</p>
+            <div className="row">
+              <div className="col-lg-4 col-4">
+                <button
+                  className={
+                    scheduleVariable === 1 ? "schButton-active" : "schButton"
+                  }
+                  onClick={() => {
+                    setScheduleVariable(1);
+                  }}
+                >
+                  EveryDay
+                </button>
+              </div>
+              <div className="col-lg-4 col-4">
+                <button
+                  className={
+                    scheduleVariable === 2 ? "schButton-active" : "schButton"
+                  }
+                  onClick={() => {
+                    setScheduleVariable(2);
+                  }}
+                >
+                  3 Days/Week
+                </button>
+              </div>
+              <div className="col-lg-4 col-4">
+                <button
+                  className={
+                    scheduleVariable === 3 ? "schButton-active" : "schButton"
+                  }
+                  onClick={() => {
+                    setScheduleVariable(3);
+                  }}
+                >
+                  Alternate Day
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-        {/* <div className="col-lg-6 mb-3">
+          <div className="col-lg-6 mb-3">
+            <div style={{ pointerEvents: "none" }}>
+              <Calendar
+                //  onChange={onChange}
+                showNavigation={false}
+                defaultValue={startDate}
+                tileClassName={({ date, view }) => {
+                  if (
+                    scheduledDates.find(
+                      (x) => x === moment(date).format("DD-MM-YYYY")
+                    )
+                  ) {
+                    return "highlight";
+                  }
+                }}
+                minDate={new Date()}
+              />
+            </div>
+          </div>
+          {/* <div className="col-lg-6 mb-3">
           Bill displayed here
           <div className="bill">
             <div className="billItems">
@@ -174,7 +175,7 @@ const SubItemFullDisplay = ({ cartList,clicked }) => {
             <div></div>
           </div>
         </div> */}
-      </div>
+        </div>
       </div>
     </Fragment>
   );

@@ -15,4 +15,5 @@ export const CONV_ID = "?convId=";
 export const USER_ID = "?userId=";
 export const place_order = "bs-order/";
 export const add_fav = "bs-favourite/";
+export const bs_sub = "bs-subscription/";
 export const checkOut = "checkout";
