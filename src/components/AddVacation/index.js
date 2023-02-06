@@ -10,10 +10,14 @@ const SUBSCRIBEDARR = ["Buffalo Milk A2", "Dahi", "Paneer", "Cow Milk A2"];
 
 const AddVacation = () => {
   const [startDate, setStartDate] = useState(
-    moment().hour()>19?moment().add(2, "d").toDate():moment().add(1, "d").toDate()
+    moment().hour() > 19
+      ? moment().add(2, "d").toDate()
+      : moment().add(1, "d").toDate()
   );
   const [endDate, setEndDate] = useState(
-    moment().hour()>19?moment().add(3, "d").toDate():moment().add(3, "d").toDate()
+    moment().hour() > 19
+      ? moment().add(3, "d").toDate()
+      : moment().add(3, "d").toDate()
   );
   const [subProductsArr, setSubProductsArr] = useState([]);
   useEffect(() => {
@@ -28,8 +32,8 @@ const AddVacation = () => {
     // }
     // let ct=moment().hour()
     // console.log(ct);
-    setEndDate(moment(startDate).add(1,"d").toDate());
-    console.log(endDate)
+    setEndDate(moment(startDate).add(1, "d").toDate());
+    console.log(endDate);
     console.log(startDate);
   }, [startDate]);
   const handleStartDateChange = (e) => {
@@ -146,8 +150,7 @@ const AddVacation = () => {
               </div>
             </div>
             <div className="sitems">
-            <MultiSelector style={{minWidth:"50%"}} />
-
+              <MultiSelector style={{ minWidth: "50%" }} />
             </div>
             <div>
               <Link to="/home" className="theme-btn-back">

@@ -57,7 +57,7 @@ const ProductGrid = ({
                       <button
                         data-bs-toggle="tooltip"
                         data-bs-html="true"
-                        title="Add to Cart"
+                        title="View Product"
                         onClick={() => handleClickOpen(product)}
                       >
                         <i className="fi ti-eye"></i>
@@ -68,7 +68,7 @@ const ProductGrid = ({
                         <button
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
-                          title="Add to Cart"
+                          title="Add to Favourites"
                           onClick={() => addToWishListProduct(product)}
                         >
                           <i className="fi flaticon-like"></i>

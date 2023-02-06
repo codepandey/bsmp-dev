@@ -25,9 +25,10 @@ const OrderHistoryBox = ({ order }) => {
           <div className="title">
             Date of Purchase{" "}
             <p className="product-name">
-              {moment(new Date(order.dateTime)).format(
-                "MMM DD,YYYY [at] hh:mm A"
-              )}
+              {moment(new Date(order.dateTime))
+                .add(5, "h")
+                .add(30, "m")
+                .format("MMM DD,YYYY [at] hh:mm A")}
             </p>
           </div>
           <div className="title">
@@ -36,7 +37,7 @@ const OrderHistoryBox = ({ order }) => {
           </div>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div className="total">Total:₹ {order.grandTotal}</div>
-            <div className="details-button">View Details</div>
+            {/* <div className="details-button">View Details</div> */}
           </div>
         </div>
       </div>

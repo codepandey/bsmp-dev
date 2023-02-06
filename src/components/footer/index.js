@@ -26,8 +26,7 @@ const Footer = (props) => {
                       }}
                       src={Logo2}
                       alt="ft-logo"
-                    />
-                    {" "}
+                    />{" "}
                     Brahmshakti
                   </Link>
                 </div>
@@ -73,7 +72,7 @@ const Footer = (props) => {
                       124001
                     </li>
                     <li>
-                      <i className="fi flaticon-call"></i>+91 800 123 456 7
+                      <i className="fi flaticon-call"></i>+91 9996018032
                     </li>
                     <li>
                       <i className="fi flaticon-envelope"></i>
@@ -89,26 +88,29 @@ const Footer = (props) => {
                   <h3>My Account</h3>
                 </div>
                 <ul>
-                  <li>
+                  {/* <li>
                     <Link onClick={ClickHandler} to="/project">
                       Our Projects
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
-                    <Link onClick={ClickHandler} to="/shop">
+                    <Link
+                      onClick={ClickHandler}
+                      to="/shop?category=dairy_products"
+                    >
                       Our Shop
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link onClick={ClickHandler} to="/wishlist">
                       Wishlist
                     </Link>
-                  </li>
-                  <li>
+                  </li> */}
+                  {/* <li>
                     <Link onClick={ClickHandler} to="/checkout">
-                      Checkout
+                      S
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>

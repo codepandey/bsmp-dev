@@ -182,15 +182,13 @@ class Header extends Component {
                       </Link>
                     </li> */}
                     <li className="menu-item-has-children">
-                      
                       <span
                         className={
                           this.props?.location?.includes("shop") ? "active" : ""
                         }
                         onClick={() => openDropDown("category")}
                       >
-                        Category
-                      &nbsp; <i className="fa fa-caret-down"></i>
+                        Category &nbsp; <i className="fa fa-caret-down"></i>
                       </span>
                       <ul
                         className="sub-menu"
@@ -289,8 +287,7 @@ class Header extends Component {
                         }
                         onClick={() => openDropDown("subscription")}
                       >
-                        Subscription
-                      &nbsp; <i className="fa fa-caret-down"></i>
+                        Subscription &nbsp; <i className="fa fa-caret-down"></i>
                       </span>
                       <ul
                         className="sub-menu"
@@ -310,11 +307,11 @@ class Header extends Component {
                             My Subscriptions
                           </Link>
                         </li>
-                        <li>
+                        {/* <li>
                           <Link onClick={ClickHandler} to="/setup-Vacation">
                             Pause/Resume Subscription
                           </Link>
-                        </li>
+                        </li> */}
                         {/* <li className="menu-item-has-children">
                           <Link onClick={ClickHandler} >
                           Edit Subscription
@@ -356,10 +353,10 @@ class Header extends Component {
                       </Link>
                     </li> */}
                     <li className="menu-item-has-children">
-                      <span onClick={() => openDropDown("more")}>More
-                      &nbsp; <i className="fa fa-caret-down"></i>
+                      <span onClick={() => openDropDown("more")}>
+                        More &nbsp; <i className="fa fa-caret-down"></i>
                       </span>
-                      
+
                       <ul
                         className="sub-menu"
                         style={
@@ -495,12 +492,30 @@ class Header extends Component {
                         isCartShow ? "mini-cart-content-toggle" : ""
                       }`}
                     >
-                      <button
-                        onClick={this.cartHandler}
-                        className="mini-cart-close"
+                      {" "}
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
                       >
-                        <i className="ti-close"></i>
-                      </button>
+                        <div
+                          style={{
+                            fontSize: "20px",
+                            paddingLeft: "20px",
+                            paddingTop: "17px",
+                            fontWeight: "700",
+                          }}
+                        >
+                          Cart
+                        </div>
+                        <button
+                          onClick={this.cartHandler}
+                          className="mini-cart-close"
+                        >
+                          <i className="ti-close"></i>
+                        </button>
+                      </div>
                       <div className="mini-cart-items">
                         {carts &&
                           carts.length > 0 &&
@@ -602,12 +617,30 @@ class Header extends Component {
                           isWishlistShow ? "mini-cart-content-toggle" : ""
                         }`}
                       >
-                        <button
-                          onClick={this.wishlistHandler}
-                          className="mini-cart-close"
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                          }}
                         >
-                          <i className="ti-close"></i>
-                        </button>
+                          <div
+                            style={{
+                              fontSize: "20px",
+                              paddingLeft: "20px",
+                              paddingTop: "17px",
+                              fontWeight: "700",
+                            }}
+                          >
+                            Favourites
+                          </div>
+                          <button
+                            onClick={this.wishlistHandler}
+                            className="mini-cart-close"
+                          >
+                            <i className="ti-close"></i>
+                          </button>
+                        </div>
+
                         <div className="mini-cart-items">
                           {wishs &&
                             wishs.length > 0 &&
@@ -615,7 +648,7 @@ class Header extends Component {
                               <div className="mini-cart-item clearfix" key={i}>
                                 <div className="mini-cart-item-image">
                                   <span>
-                                    <img src={wish.proImg} alt="icon" />
+                                    <img src={wish.image} alt="icon" />
                                   </span>
                                 </div>
                                 <div className="mini-cart-item-des">
@@ -654,7 +687,7 @@ class Header extends Component {
                               to="/wishlist"
                               className="view-cart-btn"
                             >
-                              View Wishlist
+                              View Favourites
                             </Link>
                           </div>
                         </div>

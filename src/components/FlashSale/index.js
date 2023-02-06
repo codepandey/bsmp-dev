@@ -73,7 +73,7 @@ const FlashSale = ({
                             <button
                               data-bs-toggle="tooltip"
                               data-bs-html="true"
-                              title="Add to Wishlist"
+                              title="Add to Favourites"
                               onClick={() => addToWishListProduct(product)}
                             >
                               <i className="fi flaticon-like"></i>
