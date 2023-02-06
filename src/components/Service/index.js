@@ -17,7 +17,7 @@ const Service = (props) => {
               </div>
               <div className="service-icon-text">
                 <h2>Free Shipping</h2>
-                <span>Order Over ₹560</span>
+                <span>Order Over ₹500</span>
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@ const Service = (props) => {
                 </span>
               </div>
               <div className="service-icon-text">
-                <h2>24/07 Support</h2>
+                <h2>Call Support</h2>
                 <span>Any time Support </span>
               </div>
             </div>

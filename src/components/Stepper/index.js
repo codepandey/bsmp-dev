@@ -226,6 +226,7 @@ export function HorizontalNonLinearStepper(props) {
               </Button>
               <Box sx={{ flex: "1 1 auto" }} />
               <Button
+                style={{ backgroundColor: "#47a55e" }}
                 onClick={handleAddToCart}
                 sx={{ mr: 1 }}
                 disabled={activeStep === 0}

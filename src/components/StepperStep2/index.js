@@ -107,7 +107,7 @@ export function ManageSubscription(props) {
             {subProduct.title}
           </div>
           <div className="rateQuantity">
-            <div className="rate">{subProduct.price}</div>
+            <div className="rate">₹{subProduct.price}</div>
             <div className="productquantity">
               <Grid className="cart-plus-minus">
                 <Button
@@ -119,7 +119,7 @@ export function ManageSubscription(props) {
                 </Button>
                 <input
                   className="qValue"
-                  value={`${quantity}`}
+                  value={`${quantity} ${subProduct.unit}`}
                   readOnly
                   type="text"
                 />
