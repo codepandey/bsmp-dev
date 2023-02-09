@@ -26,6 +26,7 @@ class Header extends Component {
     isOutLetShow: false,
     anim: false,
     isLoggedIn: false,
+    userData: null,
   };
 
   // componentDidUpdate() {
@@ -60,6 +61,9 @@ class Header extends Component {
       this.tradeMarkAnimHandler();
       // console.log("here");
     }, 3000);
+    this.setState({ userData: this.props.userData }, () =>
+      console.log(this.state.userData)
+    );
   };
   outLetHandler = () => {
     this.setState({
@@ -126,7 +130,7 @@ class Header extends Component {
                           style={{ overflow: "hidden", whiteSpace: "nowrap" }}
                         >
                           {" "}
-                          Welcome, User
+                          Welcome, {this.state.userData?.email}
                         </span>
                       </div>
                     </div>
