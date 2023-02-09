@@ -5,6 +5,7 @@ import Header from "../header";
 export default function Navbar(props) {
   const [scroll, setScroll] = React.useState(0);
   const [isLoggedIn, setIsLoggedIn] = React.useState(null);
+  const [userData, setUserData] = React.useState(null);
 
   const handleScroll = () => setScroll(document.documentElement.scrollTop);
   const handleLogOut = () => {
@@ -18,7 +19,9 @@ export default function Navbar(props) {
   React.useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     const res = localStorage.getItem("loggedUserId");
+    const resUser = localStorage.getItem("userData");
     setIsLoggedIn(res);
+    setUserData(resUser);
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [props.location]);
@@ -41,6 +44,7 @@ export default function Navbar(props) {
           handleLogOut();
           console.log("came");
         }}
+        userData={userData}
         isLoggedIn={isLoggedIn}
         hClass={props.hClass}
         location={props.location}

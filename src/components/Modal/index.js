@@ -106,9 +106,7 @@ const DefaultModal = ({
                     Nunc quis ultrices lectus lobortis, dolor et tempus porta,
                     leo mi efficitur ante, in varius felis sem ut mauris.
                   </p> */}
-                  <p>
-                  {product && product.description}
-                  </p>
+                  <p>{product && product.description}</p>
                   {/* <div className="product-filter-item color">
                     <div className="color-name">
                       <span>Color :</span>
@@ -185,7 +183,10 @@ const DefaultModal = ({
                     ) : (
                       <Button
                         style={{ color: "black", background: "#72be72b3" }}
-                        onClick={() => handleAddToCart(product, qty)}
+                        onClick={() => {
+                          handleAddToCart(product, qty);
+                          onClose();
+                        }}
                         className="theme-btn"
                       >
                         Add to cart
