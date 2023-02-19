@@ -620,11 +620,11 @@ const CheckoutSection = ({ cartList, addToOrderHistory, checkoutRes }) => {
                       value={forms.payment_method}
                       onChange={(e) => changeHandler(e)}
                     >
-                      <FormControlLabel
+                      {/* <FormControlLabel
                         value="cash"
                         control={<Radio color="primary" />}
                         label="Payment By Card "
-                      />
+                      /> */}
                       <FormControlLabel
                         value="card"
                         control={<Radio color="primary" />}
@@ -663,6 +663,12 @@ const CheckoutSection = ({ cartList, addToOrderHistory, checkoutRes }) => {
                           // to="/order_received"
                           onClick={() => {
                             handleCompleteOrder(cartList);
+                          }}
+                          style={{
+                            width: "100%",
+                            textAlign: "center",
+                            padding: "10px",
+                            borderRadius: "3px",
                           }}
                           className="cBtn cBtnLarge cBtnTheme mt-20 ml-15"
                           // type="submit"

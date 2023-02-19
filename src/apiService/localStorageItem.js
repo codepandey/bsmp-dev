@@ -1,5 +1,5 @@
 import uuid from "react-uuid";
-
+import { store } from "../store/index";
 export const getLocalConvId = () => {
   let convId = localStorage.getItem("convId");
   if (!convId) {
@@ -15,6 +15,8 @@ export const setLocalConvId = () => {
 };
 
 export const getLocalUserDetail = () => {
-  const res = localStorage.getItem("userData");
-  return JSON.parse(res);
+  var user = store.getState().userData.user;
+  return user;
 };
+
+store.subscribe(getLocalUserDetail);

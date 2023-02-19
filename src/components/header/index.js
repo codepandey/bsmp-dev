@@ -61,9 +61,6 @@ class Header extends Component {
       this.tradeMarkAnimHandler();
       // console.log("here");
     }, 3000);
-    this.setState({ userData: this.props.userData }, () =>
-      console.log(this.state.userData)
-    );
   };
   outLetHandler = () => {
     this.setState({
@@ -93,7 +90,7 @@ class Header extends Component {
       });
     };
 
-    const { carts, subCarts } = this.props;
+    const { carts, subCarts, userData } = this.props;
     const { wishs } = this.props;
 
     let totalwishlistprice = 0;
@@ -107,7 +104,7 @@ class Header extends Component {
         <nav className="navigation navbar navbar-expand-lg">
           <div className="container">
             <div className="row">
-              <div className="col-lg-3">
+              <div className="col-lg-2">
                 <div className="navbar-header d-flex">
                   <Link
                     onClick={ClickHandler}
@@ -130,7 +127,7 @@ class Header extends Component {
                           style={{ overflow: "hidden", whiteSpace: "nowrap" }}
                         >
                           {" "}
-                          Welcome, {this.state.userData?.email}
+                          Welcome, {userData?.email || "user"}
                         </span>
                       </div>
                     </div>
@@ -390,7 +387,7 @@ class Header extends Component {
                         </li>
                       </ul>
                     </li>
-                    {this.props.isLoggedIn === null ? (
+                    {userData === "" ? (
                       <li>
                         <Link onClick={ClickHandler} to="/login">
                           Login
@@ -607,7 +604,7 @@ class Header extends Component {
                       </div>
                     </div>
                   </div>
-                  {this.props.isLoggedIn !== null && (
+                  {userData !== "" && (
                     <div className="header-wishlist-form-wrapper">
                       <button
                         onClick={this.wishlistHandler}
@@ -717,6 +714,7 @@ const mapStateToProps = (state) => {
     carts: state.cartList.cart,
     subCarts: state.subCartList.subCart,
     wishs: state.wishList.w_list,
+    userData: state.userData.user,
   };
 };
 

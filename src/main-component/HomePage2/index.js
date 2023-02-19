@@ -28,19 +28,6 @@ const HomePage2 = ({ addToCart, addToWishList }) => {
   const addToWishListProduct = (product) => {
     addToWishList(product);
   };
-  const [isLoggedIn, setLoggedIn] = React.useState(false);
-  React.useEffect(() => {
-    window.addEventListener("storage", logFunc);
-    logFunc();
-  }, []);
-  const logFunc = () => {
-    let res = getLocalUserDetail();
-    if (res) {
-      setLoggedIn(true);
-    } else {
-      setLoggedIn(false);
-    }
-  };
 
   const products = productsArray;
 
@@ -51,14 +38,12 @@ const HomePage2 = ({ addToCart, addToWishList }) => {
       <Category2 />
       <About />
       <Product
-        isLoggedIn={isLoggedIn}
         addToCartProduct={addToCartProduct}
         addToWishListProduct={addToWishListProduct}
         products={products}
       />
       <OfferSection />
       <FlashSale
-        isLoggedIn={isLoggedIn}
         addToCartProduct={addToCartProduct}
         addToWishListProduct={addToWishListProduct}
         products={products}
@@ -73,4 +58,5 @@ const HomePage2 = ({ addToCart, addToWishList }) => {
     </Fragment>
   );
 };
+
 export default connect(null, { addToCart, addToWishList })(HomePage2);

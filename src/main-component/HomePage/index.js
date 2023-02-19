@@ -29,19 +29,6 @@ const HomePage = ({ addToCart, addToWishList }) => {
   const addToWishListProduct = (product, qty = 1) => {
     addToWishList(product, qty);
   };
-  const [isLoggedIn, setLoggedIn] = React.useState(false);
-  React.useEffect(() => {
-    window.addEventListener("storage", logFunc);
-    logFunc();
-  }, []);
-  const logFunc = () => {
-    let res = getLocalUserDetail();
-    if (res) {
-      setLoggedIn(true);
-    } else {
-      setLoggedIn(false);
-    }
-  };
   useEffect(() => {
     const fetchProducts = async () => {
       const productsArray = await api();
@@ -57,14 +44,12 @@ const HomePage = ({ addToCart, addToWishList }) => {
         <Hero2 />
         <Category />
         <Product
-          isLoggedIn={isLoggedIn}
           addToCartProduct={addToCartProduct}
           addToWishListProduct={addToWishListProduct}
           products={pData}
         />
         <OfferSection />
         <FlashSale
-          isLoggedIn={isLoggedIn}
           addToCartProduct={addToCartProduct}
           addToWishListProduct={addToWishListProduct}
           products={pData}
