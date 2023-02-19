@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DefaultModal from "../Modal";
 import Offer from "../countdown";
+import { connect } from "react-redux";
 
 const FlashSale = ({
   products,
   addToCartProduct,
   addToWishListProduct,
-  isLoggedIn,
+  userData,
 }) => {
   const ClickHandler = () => {
     window.scrollTo(10, 0);
@@ -68,7 +69,7 @@ const FlashSale = ({
                             <i className="fi ti-eye"></i>
                           </button>
                         </li>
-                        {isLoggedIn && (
+                        {userData !== "" && (
                           <li>
                             <button
                               data-bs-toggle="tooltip"
@@ -141,5 +142,9 @@ const FlashSale = ({
     </section>
   );
 };
-
-export default FlashSale;
+const mapStateToProps = (state) => {
+  return {
+    userData: state.userData.user,
+  };
+};
+export default connect(mapStateToProps)(FlashSale);

@@ -18,3 +18,5 @@ export const EDIT_SUB_PRODUCT = "EDIT_SUB_PRODUCT";
 export const GET_CART = "GET_CART";
 export const ADDTO_ORDER_HISTORY = "ADDTO_ORDER_HISTORY";
 export const EMPTY_SUB_PRODUCT = "EMPTY_SUB_PRODUCT";
+export const ADD_USER = "ADD_USER";
+export const REMOVE_USER = "REMOVE_USER";

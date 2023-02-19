@@ -8,7 +8,7 @@ const Contactpage = () => {
         <div className="row">
           <div className="col col-lg-6 col-12">
             <div className="section-title-s3 section-title-s5">
-              <h2>Contacts Us</h2>
+              <h2>Contact Us</h2>
             </div>
             <div className="contact-details">
               <p>

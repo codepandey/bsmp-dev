@@ -62,18 +62,6 @@ export function HorizontalNonLinearStepper(props) {
     }
     fetchData();
   }, []);
-  React.useEffect(() => {
-    window.addEventListener("storage", logFunc);
-    logFunc();
-  }, []);
-  const logFunc = () => {
-    let res = getLocalUserDetail();
-    if (res) {
-      setLoggedIn(true);
-    } else {
-      setLoggedIn(false);
-    }
-  };
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -194,7 +182,6 @@ export function HorizontalNonLinearStepper(props) {
                   {/*  Step 1 */}
                   {activeStep === 0 && (
                     <Card
-                      isLoggedIn={isLoggedIn}
                       handleNext={handleNext}
                       setSubProduct={setSubProduct}
                       addToWishListProduct={addToWishListProduct}

@@ -3,18 +3,11 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap-v5";
 
 import DefaultModal from "../../../src/components/Modal";
+import { connect } from "react-redux";
 
 const Card = (props) => {
-  // products, addToCartProduct,addToWishListProduct
-  const {
-    handleNext,
-    products,
-    addToWishListProduct,
-    setSubProduct,
-    isLoggedIn,
-  } = props;
+  const { handleNext, products, addToWishListProduct, setSubProduct } = props;
 
-  // console.log(products)
   const ClickHandler = () => {
     window.scrollTo(0, 300);
   };
@@ -33,7 +26,6 @@ const Card = (props) => {
   const handleSubscriptionClick = (product) => {
     setSubProduct(product);
     handleNext();
-    // addSubProduct(product);
     ClickHandler();
   };
   return (
@@ -78,7 +70,7 @@ const Card = (props) => {
                           <i className="fi ti-eye"></i>
                         </button>
                       </li>
-                      {isLoggedIn && (
+                      {props.userData !== "" && (
                         <li>
                           <button
                             data-bs-toggle="tooltip"
@@ -164,5 +156,9 @@ const Card = (props) => {
     </div>
   );
 };
-
-export default Card;
+const mapStateToProps = (state) => {
+  return {
+    userData: state.userData.user,
+  };
+};
+export default connect(mapStateToProps)(Card);

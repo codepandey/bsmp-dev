@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Collapse, CardBody, Card } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./style.css";
+import { connect } from "react-redux";
 
 const menu = [
   {
@@ -186,15 +187,15 @@ const menu = [
   },
 ];
 
-export default class MobileMenu extends Component {
+export class MobileMenu extends Component {
   state = {
     isMenuShow: false,
     isOpen: 0,
     menus: [],
   };
   componentDidMount() {
-    let userLogged = localStorage.getItem("loggedUserId");
-    if (userLogged) {
+    let userLogged = this.props.userData;
+    if (userLogged !== "") {
       let menus = menu.filter((item) => item.id !== 7);
       this.setState({ ...this.state, menus: [...menus] });
     } else {
@@ -202,20 +203,19 @@ export default class MobileMenu extends Component {
       this.setState({ ...this.state, menus: [...menus] });
     }
 
-    window.addEventListener("storage", (e) => {
-      let userLogged = localStorage.getItem("loggedUserId");
-      if (userLogged) {
-        let menus = menu.filter((item) => item.id !== 7);
-        this.setState({ ...this.state, menus: [...menus] });
-      } else {
-        let menus = menu.filter((item) => item.id !== 8);
-        this.setState({ ...this.state, menus: [...menus] });
-      }
-    });
+    // window.addEventListener("storage", (e) => {
+    //   let userLogged = localStorage.getItem("loggedUserId");
+    //   if (userLogged) {
+    //     let menus = menu.filter((item) => item.id !== 7);
+    //     this.setState({ ...this.state, menus: [...menus] });
+    //   } else {
+    //     let menus = menu.filter((item) => item.id !== 8);
+    //     this.setState({ ...this.state, menus: [...menus] });
+    //   }
+    // });
   }
   logout() {
-    const res = localStorage.removeItem("loggedUserId");
-    window.dispatchEvent(new Event("storage"));
+    this.props.dispatch({ type: "REMOVE_USER" });
   }
 
   menuHandler = () => {
@@ -314,3 +314,9 @@ export default class MobileMenu extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    userData: state.userData.user,
+  };
+};
+export default connect(mapStateToProps)(MobileMenu);

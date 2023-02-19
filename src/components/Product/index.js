@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap-v5";
 import DefaultModal from "../Modal";
+import { connect } from "react-redux";
 
 const Product = ({
   products,
   addToCartProduct,
   addToWishListProduct,
-  isLoggedIn,
+  userData,
 }) => {
   const ClickHandler = () => {
     window.scrollTo(10, 0);
@@ -67,7 +68,7 @@ const Product = ({
                             <i className="fi ti-eye"></i>
                           </button>
                         </li>
-                        {isLoggedIn && (
+                        {userData !== "" && (
                           <li>
                             <button
                               data-bs-toggle="tooltip"
@@ -149,4 +150,9 @@ const Product = ({
   );
 };
 
-export default Product;
+const mapStateToProps = (state) => {
+  return {
+    userData: state.userData.user,
+  };
+};
+export default connect(mapStateToProps)(Product);

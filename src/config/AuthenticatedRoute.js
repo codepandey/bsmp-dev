@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { Redirect, useLocation } from "react-router-dom";
 
-export default function AuthenticatedRoute({ children }) {
+function AuthenticatedRoute({ children, userData }) {
   const { pathname, search } = useLocation();
-  const [isAuthenticated, setIsAuthenticated] = useState();
-  useEffect(() => {
-    let co = localStorage.getItem("loggedUserId");
-    setIsAuthenticated(co ? true : false);
-    window.addEventListener("storage", (e) => {
-      let co = localStorage.getItem("loggedUserId");
-      setIsAuthenticated(co ? true : false);
-    });
-  }, []);
-
-  if (!localStorage.getItem("loggedUserId")) {
+  if (userData == "") {
     return (
       <Redirect
         to={`/login?redirect=${pathname}${search}`}
@@ -24,3 +15,9 @@ export default function AuthenticatedRoute({ children }) {
 
   return children;
 }
+const mapStateToProps = (state) => {
+  return {
+    userData: state.userData.user,
+  };
+};
+export default connect(mapStateToProps)(AuthenticatedRoute);

@@ -5,29 +5,26 @@ body .container {
 }
 
 .check-form-area,
-.cartStatus{
+.cartStatus {
   padding: 40px;
   box-shadow: 0px 5px 15px 0px rgba(62, 65, 159, 0.1);
 
-  @media(max-width:767px){
+  @media (max-width: 767px) {
     padding: 20px;
   }
 
-  table{
-    tr{
-      &:last-child{
-            td{
-                border-bottom: 0;
-    
-            }
+  table {
+    tr {
+      &:last-child {
+        td {
+          border-bottom: 0;
         }
+      }
     }
-    .MuiTableCell-body{
+    .MuiTableCell-body {
       padding-left: 0;
-
-     }
+    }
   }
-
 }
 
 .checkoutWrapper {
@@ -140,7 +137,7 @@ body .container {
         padding: 8px 25px;
         background-color: #333;
         color: #fff;
-        &:hover{
+        &:hover {
           background-color: #b83806;
           color: #fff;
         }
@@ -170,7 +167,7 @@ body .container {
       }
     }
 
-    a{
+    a {
       width: 100%;
       text-align: center;
       padding: 10px;
@@ -179,18 +176,17 @@ body .container {
   }
 }
 
-.ml-15{
+.ml-15 {
   margin-left: 15px;
 }
 
-
-.formFooter{
-  button{
+.formFooter {
+  button {
     padding: 8px 25px;
     background-color: #333;
     color: #fff;
 
-    &:hover{
+    &:hover {
       background-color: #b83806;
       color: #fff;
     }

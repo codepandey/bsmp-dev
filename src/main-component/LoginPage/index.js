@@ -12,7 +12,9 @@ import { addUserNameEmail } from "../../apiService/userAddress";
 import { Link } from "react-router-dom";
 import OtpInput from "react-otp-input";
 import Loader from "../../components/loader";
+import { connect } from "react-redux";
 import "./style1.scss";
+import { addUserData } from "../../store/actions/userAction";
 
 const LoginPage = (props) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,14 +40,10 @@ const LoginPage = (props) => {
     let userData = {
       contact: contact,
       email: registerValue.email,
-      fullName: registerValue.full_name,
+      firstName: registerValue.full_name,
     };
     let res = await addUserNameEmail(userData);
-    localStorage.setItem(
-      "userData",
-      JSON.stringify({ ...res, name: registerValue.full_name })
-    );
-    // console.log(res, "response");
+    props.dispatch({ type: "ADD_USER", data: res });
   };
 
   const handleContact = (e) => {
@@ -83,11 +81,7 @@ const LoginPage = (props) => {
       (responseconfirm.status === 200 || responseconfirm.status === 202) &&
       isRegistered
     ) {
-      console.log(responseconfirm.data);
-      localStorage.setItem("loggedUserId", responseconfirm.data.id);
-      localStorage.setItem("Contact", contact);
-      localStorage.setItem("userData", JSON.stringify(responseconfirm.data));
-      window.dispatchEvent(new Event("storage"));
+      props.dispatch({ type: "ADD_USER", data: responseconfirm.data });
     } else if (
       (responseconfirm.status === 200 || responseconfirm.status === 202) &&
       !isRegistered
@@ -299,7 +293,6 @@ const LoginPage = (props) => {
                         type="submit"
                         onClick={() => {
                           handleRegister();
-                          setRenderStep(1);
                         }}
                       >
                         Proceed
@@ -323,4 +316,4 @@ const LoginPage = (props) => {
   );
 };
 
-export default LoginPage;
+export default connect()(LoginPage);
